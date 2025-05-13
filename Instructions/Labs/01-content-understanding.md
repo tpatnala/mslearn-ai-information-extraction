@@ -254,7 +254,7 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 
 1. On the **Test Analyzer** page, if analysis does not begin automatically, select **Run analysis**. Then wait for analysis to complete.
 
-    Audio analysis can take some time. While you're waiting, you play the audio file below:
+    Audio analysis can take some time. While you're waiting, you can play the audio file below:
 
     <video controls src="./media/call-1.mp4" title="Call 1" width="150"></video>
 
@@ -278,7 +278,7 @@ Now that you have trained a model to extract fields from voice messages, you can
 1. In the **voicemail-analyzer** page, select the **Test** tab.
 1. Use the **+ Upload test files** button to upload **call-2.mp3** from the folder where you extracted the content files, and run the analysis to extract field data from the audio file.
 
-    Audio analysis can take some time. While you're waiting, you play the audio file below:
+    Audio analysis can take some time. While you're waiting, you can play the audio file below:
 
     <video controls src="./media/call-2.mp4" title="Call 2" width="150"></video>
 
