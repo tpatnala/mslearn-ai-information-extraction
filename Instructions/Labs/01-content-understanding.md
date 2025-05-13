@@ -258,6 +258,8 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 
     <video controls src="./media/call-1.mp4" title="Call 1" width="150"></video>
 
+    **Note**: This audio was generated using AI.
+
 1. Review the analysis results, which should look similar to this:
 
     ![Screenshot of image analysis test results.](./media/voicemail-analysis.png)
@@ -279,6 +281,8 @@ Now that you have trained a model to extract fields from voice messages, you can
     Audio analysis can take some time. While you're waiting, you play the audio file below:
 
     <video controls src="./media/call-2.mp4" title="Call 2" width="150"></video>
+
+    **Note**: This audio was generated using AI.
 
 1. Review the **Fields** pane, and verify that the analyzer extracted the correct fields from the voice message.
 1. Review the **Results** pane to see the JSON response that the analyzer would return to a client application.
