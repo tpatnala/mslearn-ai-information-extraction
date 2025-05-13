@@ -40,7 +40,7 @@ Let's start by creating an Azure AI Foundry project.
 
 ## Create a Content Understanding analyzer
 
-You are going to build an analyzer that can extract information from invoices. You'll start by defining a schema based on a sample invoice.
+In your AI Foundry project, you're going to build an analyzer that can extract information from images of business cards. You'll start by defining a schema based on a sample image.
 
 1. In a new browser tab, download the [biz-card-1.png](https://github.com/microsoftlearning/mslearn-ai-information-extraction/raw/main/Labfiles/content-app/biz-card-1.png) sample business card from `https://github.com/microsoftlearning/mslearn-ai-information-extraction/raw/main/Labfiles/content-app/biz-card-1.png` and save it in a local folder.
 
@@ -224,7 +224,9 @@ Now that you've created an analyzer, you can consume it from a client applicatio
     - Checks the response from the POST operation to retrieve an ID for the analysis operation.
     - Repeatedly submits an HTTP GET request to your Content Understanding service until the operation is no longer running.
     - If the operation has succeeded, saves the JSON response
-    - Parses the JSON response and displays the values retrieved
+    - Parses the JSON response and displays the values retrieved for each type-specific field.
+
+    > **Note**: In our simple buisness card schema, all of the fields are strings. The code here illustrates the need to check the type of each field so that you can extract values of different types from a more complex schema.
 
 1. Use the **CTRL+S** command to save the code changes, but keep the code editor pane open in case you need to correct any errors in the code. Resize the panes s you can clearly see the command line pane.
 1. In the cloud shell command line pane, enter the following command to run the Python code:
