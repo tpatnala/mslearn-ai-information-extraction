@@ -383,6 +383,5 @@ Now that you have trained a model to extract fields from conference call recordi
 
 If you've finished working with the Content Understanding service, you should delete the resources you have created in this exercise to avoid incurring unnecessary Azure costs.
 
-1. In the Azure AI Foundry portal, navigate to the **travel-insurance** project and delete it.
+1. In the Azure AI Foundry portal, navigate to your project and delete it.
 1. In the Azure portal, delete the resource group you created in this exercise.
-
