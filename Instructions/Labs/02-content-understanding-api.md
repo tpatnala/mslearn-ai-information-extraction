@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Develop an analyzer client app using the Content Understanding REST API'
+    title: 'Develop a client application for Azure AI Content Understanding'
     description: 'Use Azure AI Content Understanding REST API to develop a client app for an analyzer.'
 ---
 
-# Analyze multimodal content with Azure AI Content Understanding
+# Develop a client application for Azure AI Content Understanding
 
 In this exercise, you use Azure AI Foundry portal to create a Content Understanding project that can extract information from invoices. You'll then test your content analyzer in Azure AI Foundry Portal and consume it through the Content Understanding REST interface.
 
