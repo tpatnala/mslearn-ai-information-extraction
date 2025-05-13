@@ -336,6 +336,8 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 
     <video controls src="./media/meeting-1.mp4" title="Meeting 1" width="480"></video>
 
+    **Note**: This video was generated using AI.
+
 1. When analysis is complete, review the results, which should look similar to this:
 
     ![Screenshot of image analysis test results.](./media/voicemail-analysis.png)
@@ -357,6 +359,8 @@ Now that you have trained a model to extract fields from conference call recordi
     Video analysis can take some time. While you're waiting, you can view the video below:
 
     <video controls src="./media/meeting-2.mp4" title="Meeting 2" width="480"></video>
+
+    **Note**: This video was generated using AI.
 
 1. Review the **Fields** pane, and view the fields that the analyzer extracted for each shot in the conference call video.
 1. Review the **Results** pane to see the JSON response that the analyzer would return to a client application.
