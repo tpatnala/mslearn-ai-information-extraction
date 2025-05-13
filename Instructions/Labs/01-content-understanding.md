@@ -130,7 +130,7 @@ Now that you have trained a model to extract fields from invoices, you can build
 
 1. Review the **Fields** pane, and verify that the analyzer extracted the correct fields from the test invoice.
 1. Review the **Results** pane to see the JSON response that the analyzer would return to a client application.
-1. On the **Code example** tab, view the sample code that you could use to develop an invoice processing client application that uses the Content Understanding REST interface to call your analyzer.
+1. On the **Code example** tab, view the sample code that you could use to develop a client application that uses the Content Understanding REST interface to call your analyzer.
 1. Close the **invoice-analyzer** page.
 
 ## Extract information from a slide image
@@ -213,7 +213,7 @@ Now that you have trained a model to extract fields from slides, you can build a
     > **Note**: Slide 2 doesn't include a breakfown by product category, so the product category revenue data is not found.
 
 1. Review the **Results** pane to see the JSON response that the analyzer would return to a client application.
-1. On the **Code example** tab, view the sample code that you could use to develop an invoice processing client application that uses the Content understanding REST interface to call your analyzer.
+1. On the **Code example** tab, view the sample code that you could use to develop a client application that uses the Content understanding REST interface to call your analyzer.
 1. Close the **slide-analyzer** page.
 
 ## Extract information from a voicemail recording
@@ -256,7 +256,9 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 
     Audio analysis can take some time. While you're waiting, you can play the audio file below:
 
-    <video controls src="./media/call-1.mp4" title="Call 1" width="150"></video>
+    <video controls src="./media/call-1.mp4" title="Call 1" width="150">
+        <track src="./media/call-1.vtt" kind="captions" srclang="en" label="English">
+    </video>
 
     **Note**: This audio was generated using AI.
 
@@ -280,13 +282,15 @@ Now that you have trained a model to extract fields from voice messages, you can
 
     Audio analysis can take some time. While you're waiting, you can play the audio file below:
 
-    <video controls src="./media/call-2.mp4" title="Call 2" width="150"></video>
+    <video controls src="./media/call-2.mp4" title="Call 2" width="150">
+        <track src="./media/call-2.vtt" kind="captions" srclang="en" label="English">
+    </video>
 
     **Note**: This audio was generated using AI.
 
 1. Review the **Fields** pane, and verify that the analyzer extracted the correct fields from the voice message.
 1. Review the **Results** pane to see the JSON response that the analyzer would return to a client application.
-1. On the **Code example** tab, view the sample code that you could use to develop an invoice processing client application that uses the Content understanding REST interface to call your analyzer.
+1. On the **Code example** tab, view the sample code that you could use to develop a client application that uses the Content understanding REST interface to call your analyzer.
 1. Close the **voicemail-analyzer** page.
 
 ## Extract information from a video conference recording
@@ -338,7 +342,9 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 
     Video analysis can take some time. While you're waiting, you can view the video below:
 
-    <video controls src="./media/meeting-1.mp4" title="Meeting 1" width="480"></video>
+    <video controls src="./media/meeting-1.mp4" title="Meeting 1" width="480">
+        <track src="./media/meeting-1.vtt" kind="captions" srclang="en" label="English">
+    </video>
 
     **Note**: This video was generated using AI.
 
@@ -362,13 +368,15 @@ Now that you have trained a model to extract fields from conference call recordi
 
     Video analysis can take some time. While you're waiting, you can view the video below:
 
-    <video controls src="./media/meeting-2.mp4" title="Meeting 2" width="480"></video>
+    <video controls src="./media/meeting-2.mp4" title="Meeting 2" width="480">
+        <track src="./media/meeting-2.vtt" kind="captions" srclang="en" label="English">
+    </video>
 
     **Note**: This video was generated using AI.
 
 1. Review the **Fields** pane, and view the fields that the analyzer extracted for each shot in the conference call video.
 1. Review the **Results** pane to see the JSON response that the analyzer would return to a client application.
-1. On the **Code example** tab, view the sample code that you could use to develop an invoice processing client application that uses the Content understanding REST interface to call your analyzer.
+1. On the **Code example** tab, view the sample code that you could use to develop a client application that uses the Content understanding REST interface to call your analyzer.
 1. Close the **conference-call-analyzer** page.
 
 ## Clean up
