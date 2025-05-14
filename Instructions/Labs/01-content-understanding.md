@@ -43,9 +43,9 @@ Let's start by creating an Azure AI Foundry project.
 The content you're going to analyze is in a .zip archive. Download it and extract it in a local folder.
 
 1. In a new browser tab, download [content.zip](https://github.com/microsoftlearning/mslearn-ai-information-extraction/raw/main/Labfiles/content/content.zip) from `https://github.com/microsoftlearning/mslearn-ai-information-extraction/raw/main/Labfiles/content/content.zip` and save it in a local folder.
-1. Extract the downloaded c*ontent.zip* file and view the files it contains. You'll use these files to build various Content Understanding analyzers in this exercise.
+1. Extract the downloaded *content.zip* file and view the files it contains. You'll use these files to build various Content Understanding analyzers in this exercise.
 
-> **Note**: If you're only interested in exploring analysis of a specific modality (documents, images, video, and audio), you can skip to the relevant task below. For the best experience, go through each task to learn how to extract information from different types of content.
+> **Note**: If you're only interested in exploring analysis of a specific modality (documents, images, video, or audio), you can skip to the relevant task below. For the best experience, go through each task to learn how to extract information from different types of content.
 
 ## Extract information from invoice documents
 
@@ -216,7 +216,7 @@ Now that you have trained a model to extract fields from slides, you can build a
 1. On the **Code example** tab, view the sample code that you could use to develop a client application that uses the Content understanding REST interface to call your analyzer.
 1. Close the **slide-analyzer** page.
 
-## Extract information from a voicemail recording
+## Extract information from a voicemail audio recording
 
 You are going to build an Azure AI Content Understanding analyzer that can extract information from an audio recording of a voicemail message.
 
