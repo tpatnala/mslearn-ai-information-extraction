@@ -33,7 +33,7 @@ The solution you will create for Margie's Travel requires multiple resources in 
 
 1. Return to the home page, and then create a **Storage account** resource with the following settings:
     - **Subscription**: *Your Azure subscription*
-    - **Resource group**: **The same resource group as your Azure AI Search and Azure AI Services resources*
+    - **Resource group**: *The same resource group as your Azure AI Search and Azure AI Services resources*
     - **Storage account name**: *A valid name for your storage resource*
     - **Region**: *The same region as your Azure AI Search resource*
     - **Primary service**: Azure Blob Storage or Azure Data Lake Storage Gen 2
