@@ -121,7 +121,7 @@ Now that you have the documents in place, you can create an indexer to extract i
         - Select **Choose an existing connection**
         - Select your storage account
         - Select the **documents** container (*this is only required to select the storage account in the browse interface - you'll specify a different container name for the extracted knowledge assets!*)
-    - Ensure the **Container name** box now contains **knowledge-store**.
+    - Change the **Container name** to `knowledge-store`.
 1. Proceed to the next step (**Customize target index**), where you'll specify the fields for your index. 
 1. Change the **Index name** to `margies-index`.
 1. Ensure that the **Key** is set to **metadata_storage_path**, leave the **Suggester name** blank, and ensure **Search mode** is **analyzingInfixMatching**.
