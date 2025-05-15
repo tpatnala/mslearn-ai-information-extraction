@@ -217,7 +217,7 @@ Now that you have a useful index, you can use it from a client application. You 
 
     Note the **Url** value, which should be similar to **https://*your_resource_name*.search.windows.net**. This is the endpoint for your search resource.
 
-1. In the navigation pane on teh left, expand **Settings** and view the **Keys** page.
+1. In the navigation pane on the left, expand **Settings** and view the **Keys** page.
 
     Note that there are two **admin** keys, and a single **query** key. An *admin* key is used to create and manage search resources; a *query* key is used by client applications that only need to perform search queries.
 
