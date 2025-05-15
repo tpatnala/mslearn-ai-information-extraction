@@ -203,7 +203,7 @@ Now that you have an index, you can search it.
     }
     ```
 
-    This query returns the filename and key phrases any documents mentioning "New York" that are smaller than 380,000 bytes in size.
+    This query returns the filename and key phrases for any documents mentioning "New York" that are smaller than 380,000 bytes in size.
 
 ## Create a search client application
 
