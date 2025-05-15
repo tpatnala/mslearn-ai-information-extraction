@@ -387,7 +387,8 @@ The *object* projections defined in the Margie's Travel skillset consist of a JS
             "tree",
             "plant",
             "palm"
-            ]
+            ],
+        "more fields": "..."
     }
     ```
 
