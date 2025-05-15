@@ -400,7 +400,7 @@ The *file* projections defined in the skillset create JPEG files for each image 
 
 1. In the *Storage browser* interface in the Azure portal, select the **margies-skillset-image-projection** blob container. This container contains a folder for each document that contained images.
 2. Open any of the folders and view its contents - each folder contains at least one \*.jpg file.
-3. Open any of the image files, and download and view it to see the image extracted from a document.
+3. Open any of the image files, and download and view it to see the image.
 
 The ability to generate *file* projections like this makes indexing an efficient way to extract embedded images from a large volume of documents.
 
