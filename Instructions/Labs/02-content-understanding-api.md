@@ -225,7 +225,7 @@ Now that you've created an analyzer, you can consume it from a client applicatio
     - Repeatedly submits an HTTP GET request to your Content Understanding endpoint to check the operation status until it is no longer running.
     - If the operation has succeeded, saves the JSON response, and then parses the JSON and displays the values retrieved for each type-specific field.
 
-    > **Note**: In our simple buisness card schema, all of the fields are strings. The code here illustrates the need to check the type of each field so that you can extract values of different types from a more complex schema.
+    > **Note**: In our simple business card schema, all of the fields are strings. The code here illustrates the need to check the type of each field so that you can extract values of different types from a more complex schema.
 
 1. Use the **CTRL+S** command to save the code changes, but keep the code editor pane open in case you need to correct any errors in the code. Resize the panes s you can clearly see the command line pane.
 1. In the cloud shell command line pane, enter the following command to run the Python code:
