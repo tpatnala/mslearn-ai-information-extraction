@@ -270,9 +270,9 @@ Now that you've created an analyzer, you can consume it from a client applicatio
 1. Review the code you added, which:
     - Reads the contents of the image file
     - Sets the version of the Content Understanding REST API to be used
-    - Submits an HTTP POST request to your Content Understanding endpoint, instructing the to analyze the image.
-    - Checks the response from the POST operation to retrieve an ID for the analysis operation.
-    - Repeatedly submits an HTTP GET request to your Content Understanding endpoint to check the operation status until it is no longer running.
+    - Submits an HTTP *POST* request to your Content Understanding endpoint, instructing the to analyze the image.
+    - Checks the response from the operation to retrieve an ID for the analysis operation.
+    - Repeatedly submits an HTTP *GET* request to your Content Understanding endpoint to check the operation status until it is no longer running.
     - If the operation has succeeded, saves the JSON response, and then parses the JSON and displays the values retrieved for each type-specific field.
 
     > **Note**: In our simple business card schema, all of the fields are strings. The code here illustrates the need to check the type of each field so that you can extract values of different types from a more complex schema.
