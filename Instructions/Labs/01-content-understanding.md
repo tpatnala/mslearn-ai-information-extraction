@@ -29,7 +29,7 @@ Let's start by creating an Azure AI Foundry project.
         - Sweden Central
         - Australia East
     - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource*
-    - **Connect Azure AI Search**: *Create a new Azure AI Search resource with a unique name*
+    - **Connect Azure AI Search**: Skip connecting
 
     > \*At the time of writing, Azure AI Content understanding is only avilable in these regions.
 
