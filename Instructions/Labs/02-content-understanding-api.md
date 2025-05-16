@@ -21,9 +21,7 @@ Let's start by creating an Azure AI services resource.
 
     ![Screenshot of search results in the Azure portal for Azure AI services.](./media/azure-ai-services.png)
 
-    > **Important!** Be sure to select the **Azure AI services** resource under **All Azure AI services** with the following icon<br>[Azure AI services icon.](./media/azure-ai-services-icon.png)<br>>There's another Azure resource type named Azure AI services, which won't work for this exercise.
-    >
-    > !
+    > **Important!** Be sure to select the **Azure AI services** resource under **All Azure AI services** with the following icon:<br>![Azure AI services icon.](./media/azure-ai-services-icon.png)<br>>There's another Azure resource type named Azure AI services, which won't work for this exercise.
 
 1. After selecting **Azure AI services**, above the list of existing Azure AI services resources in your subscription (if any), select **+ Create**; and create a new Azure AI services resource with the following settings:
     - **Subscription**: *Your Azure subscription*
