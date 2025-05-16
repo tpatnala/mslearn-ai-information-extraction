@@ -1,3 +1,2 @@
 dotenv
-azure-identity
-azure-ai-projects
+requests

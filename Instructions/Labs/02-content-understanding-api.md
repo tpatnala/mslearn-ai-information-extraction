@@ -10,91 +10,47 @@ In this exercise, you use Azure AI Content Understanding to create an analyzer t
 
 This exercise takes approximately **30** minutes.
 
-## Create an Azure AI Foundry project
+## Create an Azure AI services resource
 
-Let's start by creating an Azure AI Foundry project.
+Let's start by creating an Azure AI services resource.
 
-1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image:
+1. In a web browser, open the [Azure portal](https://portal.azure.com) at `https://portal.azure` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in.
 
-    ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-portal.png)
+1. In the home page, in the search box at the top of the page, search for `Azure AI services`.
+1. On the search results page, in the navigation pane on the left, under **All Azure AI ser ices** and **Azure AI services**, select **Azure AI services**.
 
-1. In the home page, select **+ Create project**.
-1. In the **Create a project** wizard, enter a valid name for your project, and if an existing hub is suggested, choose the option to create a new one. Then review the Azure resources that will be automatically created to support your hub and project.
-1. Select **Customize** and specify the following settings for your hub:
-    - **Hub name**: *A valid name for your hub*
+    ![Screenshot of search results in the Azure portal for Azure AI services.](./media/azure-ai-services.png)
+
+    > **Important!** Be sure to select the **Azure AI services** resource under **All Azure AI services** with the following icon - there's another Azure resource type named Azure AI services, which won't work for this exercise.
+    >
+    > ![Azure AI services icon.](./media/azure-ai-services-icon.png) Azure AI services
+
+1. After selecting **Azure AI services**, above the list of existing Azure AI services resources in your subscription (if any), select **+ Create**; and create a new Azure AI services resource with the following settings:
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create or select a resource group*
-    - **Location**: Choose one of the following regions\*
+    - **Region**: Choose one of the following regions\*
         - West US
         - Sweden Central
         - Australia East
-    - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource*
-    - **Connect Azure AI Search**: Skip connecting
+    - **Name**: *A valid name for your Azure AI services resource*
+    - **Pricing tier**: Standard S0
 
     > \*At the time of writing, Azure AI Content understanding is only avilable in these regions.
 
-1. Select **Next** and review your configuration. Then select **Create** and wait for the process to complete.
-1. When your project is created, close any tips that are displayed and review the project page in Azure AI Foundry portal, which should look similar to the following image:
+1. Wait for the resource to be created, then go to its page in the Azure portal.
+1. In the page for your Azure AI services resource, in the navigation pane on the left, under **Resource management**, select **Keys and endpoint** to view the keys and endpoint page for the resource. Then select the **Content Understanding** tab:
 
-    ![Screenshot of a Azure AI project details in Azure AI Foundry portal.](./media/ai-foundry-project.png)
+    ![Screenshot of Content Understanding keys and endpoint in the Azure AI portal.](./media/keys-and-endpoint.png)
 
-## Create a Content Understanding analyzer
+## Use the REST API to create a Content Understanding analyzer
 
-In your AI Foundry project, you're going to build an analyzer that can extract information from images of business cards. You'll start by defining a schema based on a sample image.
-
-1. In a new browser tab, download the [biz-card-1.png](https://github.com/microsoftlearning/mslearn-ai-information-extraction/raw/main/Labfiles/content-app/biz-card-1.png) sample business card from `https://github.com/microsoftlearning/mslearn-ai-information-extraction/raw/main/Labfiles/content-app/biz-card-1.png` and save it in a local folder.
-
-    The buisness card in the image looks like this:
-
-    ![A business card for Roberto Tamburello, an Adventure Works Cycles employee.](./media/biz-card-1.png)
-
-1. Return to the tab containing the home page for your Azure AI Foundry project; and in the navigation pane on the left, select **Content Understanding**.
-1. On the **Content Understanding** page, select the **Custom analyzer** tab at the top.
-1. On the Content Understanding custom analyzer page, select **+ Create**, and create a task with the following settings:
-    - **Task name**: `Business card analysis`
-    - **Description**: `Extract data from a business card`
-    - **Azure AI services connection**: *the Azure AI Services resource in your Azure AI Foundry hub*
-    - **Azure Blob Storage account**: *The default storage account in your Azure AI Foundry hub*
-1. Wait for the task to be created.
-
-    > **Tip**: If an error accessing storage occurs, wait a minute and try again.
-
-1. On the **Define schema** page, upload **biz-card-1.png** and select the **Document analysis** template. Then select **Create**.
-
-    The *Document analysis* template doesn't include any predefined fields. You must define fields to describe the information you want to extract.
-
-1. Use **+ Add new field** button to add the following fields, selecting **Save changes** (**&#10003;**) for each new field:
-
-    | Field name | Field description | Value type | Method |
-    |--|--|--|--|
-    | `Company` | `Company or organization` | String | Extract |
-    | `Name` | `Contact's name` | String | Extract |
-    | `Title` | `Contact's job title` | String | Extract |
-    | `Email` | `Contact's email address` | String | Extract |
-    | `Phone` | `Contact's phone number` | String | Extract |
-
-1. Verify that your completed schema includes the fields above, and select **Save**.
-1. On the **Test Analyzer** page, if analysis does not begin automatically, select **Run analysis**. Then wait for analysis to complete and review the values extracted from the business card based on the fields in the schema. The fields should have been correctly identified.
-
-    > **Note**: For more complex document layouts, you can explicitly *label* the fields in an example document to improve the accuracy of the analyzer. For this simple senario, the fields should be detected automatically.
-
-1. Select the **Build analyzer** page, and then select **+ Build analyzer** and build a new analyzer with the following properties (typed exactly as shown here):
-    - **Name**: `business-card-analyzer`
-    - **Description**: `Business card analyzer`
-1. Wait for the new analyzer to be ready (use the **Refresh** button to check).
-
-## Use the Content Understanding REST API
-
-Now that you've created an analyzer, you can consume it from a client application through the Content Understanding REST API.
-
-1. Return to the **Overview** page for your AI Foundry project, and in the **Project details** area, note the **Project connection string**. You'll use this connection string to connect to your project in a client application.
-1. Open a new browser tab (keeping the Azure AI Foundry portal open in the existing tab). Then in the new tab, browse to the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`; signing in with your Azure credentials if prompted.
-
-    Close any welcome notifications to see the Azure portal home page.
+You're going to use the REST API to create an analyzer that can extract information from images of business cards.
 
 1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment with no storage in your subscription.
 
     The cloud shell provides a command-line interface in a pane at the bottom of the Azure portal. You can resize or maximize this pane to make it easier to work in.
+
+    > **Tip**: Resize the pane so you can work mostly in the cloud shell but still see the keys and endpoint in the Azure portal page - you'll need to copy them into your code.
 
 1. In the cloud shell toolbar, in the **Settings** menu, select **Go to Classic version** (this is required to use the code editor).
 
@@ -134,13 +90,107 @@ Now that you've created an analyzer, you can consume it from a client applicatio
 
     The file is opened in a code editor.
 
-1. In the code file, replace the **YOUR_PROJECT_CONNECTION_STRING** placeholder with the connection string for your project (copied from the project **Overview** page in the Azure AI Foundry portal), and ensure that **ANALYZER** is set to the name you assigned to your analyzer (which should be *business-card-analyzer*)
+1. In the code file, replace the **YOUR_ENDPOINT** and **YOUR_KEY** placeholders with the your Azure AI services endpoint and either of its keys (copied from the Azure portal), and ensure that **ANALYZER_NAME** is set to `business-card-analyzer`.
 1. After you've replaced the placeholders, within the code editor, use the **CTRL+S** command to save your changes and then use the **CTRL+Q** command to close the code editor while keeping the cloud shell command line open.
 
-1. In the cloud shell command line, enter the following command to edit the **card-app.py** Python code file that has been provided:
+    > **Tip**: You can maximize the cloud shell pane now.
+
+1. In the cloud shell command line, enter the following command to view the **biz-card.json** JSON file that has been provided:
 
     ```
-   code card-app.py
+   cat biz-card.json
+    ```
+
+    Scroll the cloud shell pane to view the JSON in the file, which defines an analyzer schema for a business card.
+
+1. When you've viewed the JSON file for the analyzer, enter the following command to edit the **create-analyzer.py** Python code file that has been provided:
+
+    ```
+   code create-analyzer.py
+    ```
+
+    The Python code file is opened in a code editor.
+
+1. Review the code, which:
+    - Loads the analyzer schema from **biz-card.json** file.
+    - Retrieves the endpoint, key, and analyzer name from the environment configuration file.
+    - Calls a function named **create_analyzer**, which is currently not implemented
+
+1. In the **create_analyzer** function, find the comment **Create a Content Understanding analyzer** and add the following code (being careful to maintain the correct indentation):
+
+    ```python
+   # Create a Content Understanding analyzer
+   print (f"Creating {analyzer}")
+
+   # Set the API version
+   CU_VERSION = "2024-12-01-preview"
+
+   # initiate the analyzer creation operation
+   headers = {
+        "Ocp-Apim-Subscription-Key": key,
+        "Content-Type": "application/json"}
+
+   url = f"{endpoint}/contentunderstanding/analyzers/{analyzer}?api-version={CU_VERSION}"
+
+   # Delete the analyzer if it already exists
+   response = requests.delete(url, headers=headers)
+   print(response.status_code)
+   time.sleep(1)
+
+   # Now create it
+   response = requests.put(url, headers=headers, data=(schema))
+   print(response.status_code)
+
+   # Get the response and extract the callback URL
+   callback_url = response.headers["Operation-Location"]
+
+   # Check the status of the operation
+   time.sleep(1)
+   result_response = requests.get(callback_url, headers=headers)
+
+   # Keep polling until the operation is no longer running
+   status = result_response.json().get("status")
+   while status == "Running":
+        time.sleep(1)
+        result_response = requests.get(callback_url, headers=headers)
+        status = result_response.json().get("status")
+
+   result = result_response.json().get("status")
+   print(result)
+   if result == "Succeeded":
+        print(f"Analyzer '{analyzer}' created successfully.")
+   else:
+        print("Analyzer creation failed.")
+        print(result_response.json())
+    ```
+
+1. Review the code you added, which:
+    - Creates appropriate headers for the REST requests
+    - Submits an HTTP *DELETE* request to delete the analyzer if it already exists.
+    - Submits an HTTP *PUT* request to initiate the creation of the analyzer.
+    - Checks the response to retrieve the *Operation-Location* callback URL.
+    - Repeatedly submits an HTTP *GET* request to the callback URL to check the operation status until it is no longer running.
+    - Confirms success (or failure) of the operation to the user.
+
+    > **Note**: The code includes some deliberate time delays to avoid exceeding the request rate limit foe the service.
+
+1. Use the **CTRL+S** command to save the code changes, but keep the code editor pane open in case you need to correct any errors in the code. Resize the panes so you can clearly see the command line pane.
+1. In the cloud shell command line pane, enter the following command to run the Python code:
+
+    ```
+   python create-analyzer.py
+    ```
+
+1. Review the output from the program, which should hopefully indicate that the analyzer has been created.
+
+## Use the REST API to analyze content
+
+Now that you've created an analyzer, you can consume it from a client application through the Content Understanding REST API.
+
+1. In the cloud shell command line, enter the following command to edit the **read-card.py** Python code file that has been provided:
+
+    ```
+   code read-card.py
     ```
 
     The Python code file is opened in a code editor:
@@ -157,7 +207,7 @@ Now that you've created an analyzer, you can consume it from a client applicatio
    print (f"Analyzing {image_file}")
 
    # Set the API version
-   CU_VERSION = "2024-12-01-preview";
+   CU_VERSION = "2024-12-01-preview"
 
    # Read the image data
    with open(image_file, "rb") as file:
@@ -168,7 +218,7 @@ Now that you've created an analyzer, you can consume it from a client applicatio
    headers = {
         "Ocp-Apim-Subscription-Key": key,
         "Content-Type": "application/octet-stream"}
-   url = endpoint + f'/contentunderstanding/analyzers/{analyzer}:analyze?api-version={CU_VERSION}'
+   url = f'{endpoint}/contentunderstanding/analyzers/{analyzer}:analyze?api-version={CU_VERSION}'
    response = requests.post(url, headers=headers, data=image_data)
 
    # Get the response and extract the ID assigned to the analysis operation
@@ -178,6 +228,7 @@ Now that you've created an analyzer, you can consume it from a client applicatio
 
    # Use a GET request to check the status of the analysis operation
    print ('Getting results...')
+   time.sleep(1)
    result_url = f'{endpoint}/contentunderstanding/analyzers/{analyzer}/results/{id_value}?api-version={CU_VERSION}'
    result_response = requests.get(result_url, headers=headers)
    print(result_response.status_code)
@@ -185,6 +236,7 @@ Now that you've created an analyzer, you can consume it from a client applicatio
    # Keep polling until the analysis is complete
    status = result_response.json().get("status")
    while status == "Running":
+        time.sleep(1)
         result_response = requests.get(result_url, headers=headers)
         status = result_response.json().get("status")
 
@@ -195,7 +247,7 @@ Now that you've created an analyzer, you can consume it from a client applicatio
         output_file = "results.json"
         with open(output_file, "w") as json_file:
             json.dump(result_json, json_file, indent=4)
-            print(f"Response saved in {output_file}")
+            print(f"Response saved in {output_file}\n")
 
         # Iterate through the fields and extract the names and type-specific values
         contents = result_json["result"]["contents"]
@@ -227,35 +279,37 @@ Now that you've created an analyzer, you can consume it from a client applicatio
 
     > **Note**: In our simple business card schema, all of the fields are strings. The code here illustrates the need to check the type of each field so that you can extract values of different types from a more complex schema.
 
-1. Use the **CTRL+S** command to save the code changes, but keep the code editor pane open in case you need to correct any errors in the code. Resize the panes s you can clearly see the command line pane.
+1. Use the **CTRL+S** command to save the code changes, but keep the code editor pane open in case you need to correct any errors in the code. Resize the panes so you can clearly see the command line pane.
 1. In the cloud shell command line pane, enter the following command to run the Python code:
 
     ```
-   python card-app.py biz-card-1.png
+   python read-card.py biz-card-1.png
     ```
 
-1. Review the output from the program, which should show the values for the fields in the business card with which you trained the analyzer
+1. Review the output from the program, which should show the values for the fields in the following business card:
+
+    ![A business card for Roberto Tamburello, an Adventure Works Cycles employee.](./media/biz-card-1.png)
+
 1. Use the following command to run the program with a different business card:
 
     ```
-   python card-app.py biz-card-2.png
+   python read-card.py biz-card-2.png
     ```
 
 1. Review the results, which should reflect the values in this business card:
 
     ![A business card for Mary Duartes, an Contoso employee.](./media/biz-card-2.png)
 
-1. In the cloud shell command line pane, use the **more** command to view the full JSON response that was returned:
+1. In the cloud shell command line pane, use the following command to view the full JSON response that was returned:
 
     ```
-   more results.json
+   cat results.json
     ```
 
-    Use **Enter** or the down arrow to scroll through the JSON.
+    Scroll to view the JSON.
 
 ## Clean up
 
 If you've finished working with the Content Understanding service, you should delete the resources you have created in this exercise to avoid incurring unnecessary Azure costs.
 
-1. In the Azure AI Foundry portal, navigate to your project and delete it.
-1. In the Azure portal, delete the resource group you created in this exercise.
+1. In the Azure portal, delete the resources you created in this exercise.

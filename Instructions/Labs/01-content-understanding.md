@@ -64,9 +64,13 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 
     > **Tip**: If an error accessing storage occurs, wait a minute and try again. Permissions for a new hub may take a few minutes to propagate.
 
-1. On the **Define schema** page, upload the **invoice-1234.pdf** file from the folder where you extracted content files. Then select the **Invoice analysis** template and select **Create**.
+1. On the **Define schema** page, upload the **invoice-1234.pdf** file from the folder where you extracted content files. This file contains the following invoice:
 
-    The *Invoice analysis* template includes common fields that are found in invoices. You can use the schema editor to delete any of thre suggested fields thatyou don't need, and add any custom fields that you do.
+    ![Image of an invoice number 1234.](./media/invoice-1234.png)
+
+1. On the **Define schema** page, after uploading the invoice file, select the **Invoice analysis** template and select **Create**.
+
+    The *Invoice analysis* template includes common fields that are found in invoices. You can use the schema editor to delete any of the suggested fields that you don't need, and add any custom fields that you do.
 
 1. In the list of suggested fields, select **BillingAddress**. This field is not needed for the invoice format you have uploaded, so use the **Delete field** (**&#128465;**) icon that appears in the selected field row to delete it.
 1. Now delete the following suggested fields, which aren't needed for your invoice schema:
@@ -96,15 +100,20 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
     | `VendorPhone` | `Vendor telephone number` | String | Extract |
     | `ShippingFee` | `Fee for shipping` | Number | Extract |
 
+1. In the row for the **Items** field, note that this field is a *table* (it contains the collection of items in the invoice). Select it's **Edit** (&#9638;) icon to open a new page with its subfields.
+1. Remove the following subfields from the **Items** table:
+    - Date
+    - ProductCode
+    - Unit
+    - TaxAmount
+    - TaxRate
+1. Use the **Back** button to return to the top-level of the invoice schema.
+
 1. Verify that your completed schema looks like this, and select **Save**.
 
     ![Screenshot of a schema for an invoice.](./media/invoice-schema.png)
 
 1. On the **Test Analyzer** page, if analysis does not begin automatically, select **Run analysis**. Then wait for analysis to complete.
-
-    The invoice being analyzed looks like this:
-
-    ![Image of an invoice number 1234.](./media/invoice-1234.png)
 
 1. Review the analysis results, which should look similar to this:
 
