@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Develop a content understanding client application'
+    title: 'Develop a Content Understanding client application'
     description: 'Use Azure AI Content Understanding REST API to develop a client app for an analyzer.'
 ---
 
-# Develop a content understanding client application
+# Develop a Content Understanding client application
 
 In this exercise, you use Azure AI Content Understanding to create an analyzer that extracts information from business cards. You'll then develop a client application that uses the analyzer to extract contact details from scanned business cards.
 
