@@ -11,12 +11,12 @@ def main():
     # Clear the console
     os.system('cls' if os.name=='nt' else 'clear')
 
-    # Get the business card
-    image_file = 'biz-card-1.png'
-    if len(sys.argv) > 1:
-        image_file = sys.argv[1]
-
     try:
+
+        # Get the business card
+        image_file = 'biz-card-1.png'
+        if len(sys.argv) > 1:
+            image_file = sys.argv[1]
 
         # Get config settings
         load_dotenv()
