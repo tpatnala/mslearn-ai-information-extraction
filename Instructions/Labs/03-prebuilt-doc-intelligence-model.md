@@ -42,7 +42,7 @@ Let's start by using the **Azure AI Foundry** portal and the Read model to analy
 
     ![Screenshot showing the Read page in Azure AI Document Intelligence Studio.](./media/read-german-sample.png#lightbox)
 
-1. At the top toolbar, select **Analyze options**, then enable the **Language** check-box (under **Optional detection**) in the **Analyze options** pane and click on **Save**. 
+1. At the top toolbar, select **Analyze options**, then enable the **Language** check-box (under **Optional detection**) in the **Analyze options** pane and select **Save**. 
 1. At the top-left, select **Run Analysis**.
 1. When the analysis is complete, the text extracted from the image is shown on the right in the **Content** tab. Review this text and compare it to the text in the original image for accuracy.
 1. Select the **Result** tab. This tab displays the extracted JSON code. 
@@ -57,7 +57,7 @@ Now let's explore the app that uses the Azure Document Intelligence service SDK.
 > **Tip**: If you have already cloned the **mslearn-ai-information-extraction** repo, you can skip this task. Otherwise, follow these steps to clone it to your development environment.
 
 1. In the Azure AI Foundry portal, view the **Overview** page for your project.
-1. In the **Endpoints and keys** area, note the **API Key** and **Azure AI Services endpoint** under the **Azure AI Services** option. You'll use these credentials to connect to your Azure AI Services in a client application.
+1. In the **Endpoints and keys** area, select the **Azure AI Services** tab, and note the **API Key** and **Azure AI Services endpoint**. You'll use these credentials to connect to your Azure AI Services in a client application.
 1. Open a new browser tab (keeping the Azure AI Foundry portal open in the existing tab). Then in the new tab, browse to the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`; signing in with your Azure credentials if prompted.
 1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal.
 
@@ -70,8 +70,8 @@ Now let's explore the app that uses the Azure Document Intelligence service SDK.
 1. In the PowerShell pane, enter the following commands to clone the GitHub repo for this exercise:
 
     ```
-   rm -r mslearn-ai-information-extraction -f
-   git clone https://github.com/microsoftlearning/mslearn-ai-information-extraction mslearn-ai-information-extraction
+   rm -r mslearn-ai-info -f
+   git clone https://github.com/microsoftlearning/mslearn-ai-information-extraction mslearn-ai-info
     ```
 
 Applications for both C# and Python have been provided, as well as a sample pdf file you'll use to test Document Intelligence. Both apps feature the same functionality. First, you'll complete some key parts of the application to enable using your Azure Document Intelligence resource.
@@ -82,21 +82,30 @@ Applications for both C# and Python have been provided, as well as a sample pdf 
 
     ***Now follow the steps for your chosen programming language.***
 
-1. After the repo has been cloned, navigate to the folder containing the code files:  
+1. After the repo has been cloned, navigate to the folder containing the code files:
+
+   **Python**
+
+    ```
+   cd mslearn-ai-info/Labfiles/prebuilt-doc-intelligence/python
+    ```
 
     **C#**
 
     ```
-   cd mslearn-ai-information-extraction/Labfiles/prebuilt-doc-intelligence/C-Sharp
+   cd mslearn-ai-info/Labfiles/prebuilt-doc-intelligence/c-sharp
     ```
 
-    **Python**
-
-    ```
-   cd mslearn-ai-information-extraction/Labfiles/prebuilt-doc-intelligence/Python
-    ```
 
 1. In the cloud shell command line pane, enter the following command to install the libraries you'll use:
+
+   **Python**
+
+    ```
+   python -m venv labenv
+   ./labenv/bin/Activate.ps1
+   pip install -r requirements.txt azure-ai-formrecognizer==3.3.3
+    ```
 
     **C#**
 
@@ -104,13 +113,25 @@ Applications for both C# and Python have been provided, as well as a sample pdf 
    dotnet add package Azure.AI.FormRecognizer --version 4.1.0
     ```
 
+1. Enter the following command to edit the configuration file that has been provided:
+
     **Python**
 
     ```
-   python -m venv labenv
-   ./labenv/bin/Activate.ps1
-   pip install azure-ai-formrecognizer==3.3.3
+   code .env
     ```
+
+    **C#**
+
+    ```
+   code appsettings.json
+    ```
+    
+
+    The file is opened in a code editor.
+
+1. In the code file, replace the **YOUR_ENDPOINT** and **YOUR_KEY** placeholders with your Azure AI services endpoint and its API key (copied from the Azure AI Foundry portal).
+1. After you've replaced the placeholders, within the code editor, use the **CTRL+S** command to save your changes and then use the **CTRL+Q** command to close the code editor while keeping the cloud shell command line open.
 
 ## Add code to use the Azure Document Intelligence service
 
@@ -118,78 +139,108 @@ Now you're ready to use the SDK to evaluate the pdf file.
 
 1. Enter the following command to edit the app file that has been provided:
 
-    **C#**
-
-    ```
-   code Program.cs
-    ```
-
     **Python**
 
     ```
    code document-analysis.py
     ```
 
+    **C#**
+
+    ```
+   code Program.cs
+    ```
+
     The file is opened in a code editor.
 
-1. In the code file, replace the `<Endpoint URL>` and `<API Key>` placeholders with the **Azure AI Services endpoint** and **API Key** for your project (copied from the project **Overview** page, in the **Azure AI Services** capability option in the Azure AI Foundry portal):
-
-    **C#**: ***Program.cs***
-
-    ```csharp
-    string endpoint = "<Endpoint URL>";
-    string apiKey = "<API Key>";
-    ```
-
-    **Python**: ***document-analysis.py***
-
-    ```python
-    endpoint = "<Endpoint URL>"
-    key = "<API Key>"
-    ```
-
-1. Locate the comment `Create the client`. Following that, on new lines, enter the following code:
-
-    **C#**
-
-    ```csharp
-    var cred = new AzureKeyCredential(apiKey);
-    var client = new DocumentAnalysisClient(new Uri(endpoint), cred);
-    ```
+1. In the code file, find the comment **Import the required libraries** and add the following code:
 
     **Python**
 
     ```python
-    document_analysis_client = DocumentAnalysisClient(
+   # Add references
+   from azure.core.credentials import AzureKeyCredential
+   from azure.ai.formrecognizer import DocumentAnalysisClient
+    ```
+
+    **C#**
+
+    ```csharp
+   // Add references
+   using Azure.AI.FormRecognizer.DocumentAnalysis;
+    ```
+
+1. Find the comment **Create the client** and add the following code (being careful to maintain the correct indentation level):
+
+    **Python**
+
+    ```python
+   # Create the client
+   document_analysis_client = DocumentAnalysisClient(
         endpoint=endpoint, credential=AzureKeyCredential(key)
-    )
+   )
     ```
-
-1. Locate the comment `Analyze the invoice`. Following that, on new lines, enter the following code:
 
     **C#**
 
     ```csharp
-    AnalyzeDocumentOperation operation = await client.AnalyzeDocumentFromUriAsync(WaitUntil.Completed, "prebuilt-invoice", fileUri);
+   // Create the client
+   var cred = new AzureKeyCredential(apiKey);
+   var client = new DocumentAnalysisClient(new Uri(endpoint), cred);
     ```
+
+1. Find the comment **Analyze the invoice** and add the following code:
 
     **Python**
 
     ```python
-    poller = document_analysis_client.begin_analyze_document_from_url(
+   # Analyse the invoice
+   poller = document_analysis_client.begin_analyze_document_from_url(
         fileModelId, fileUri, locale=fileLocale
-    )
+   )
     ```
-
-1. Locate the comment `Display invoice information to the user`. Following that, on news lines, enter the following code:
 
     **C#**
 
     ```csharp
-    AnalyzeResult result = operation.Value;
+   // Analyse the invoice
+   AnalyzeDocumentOperation operation = await client.AnalyzeDocumentFromUriAsync(
+        WaitUntil.Completed,
+        "prebuilt-invoice", fileUri);
+    ```
+
+1. Find the comment **Display invoice information to the user**and add the following code:
+
+     **Python**
+
+    ```python
+  # Display invoice information to the user
+   receipts = poller.result()
     
-    foreach (AnalyzedDocument invoice in result.Documents)
-    {
+   for idx, receipt in enumerate(receipts.documents):
+    
+        vendor_name = receipt.fields.get("VendorName")
+        if vendor_name:
+            print(f"\nVendor Name: {vendor_name.value}, with confidence {vendor_name.confidence}.")
+
+        customer_name = receipt.fields.get("CustomerName")
+            if customer_name:
+                print(f"Customer Name: '{customer_name.value}, with confidence {customer_name.confidence}.")
+
+
+        invoice_total = receipt.fields.get("InvoiceTotal")
+        if invoice_total:
+            print(f"Invoice Total: '{invoice_total.value.symbol}{invoice_total.value.amount}, with confidence {invoice_total.confidence}.")
+    ```
+
+   **C#**
+
+    ```csharp
+   // Display invoice information to the user
+   AnalyzeResult result = operation.Value;
+    
+   foreach (AnalyzedDocument invoice in result.Documents)
+   {
         if (invoice.Fields.TryGetValue("VendorName", out DocumentField? vendorNameField))
         {
             if (vendorNameField.FieldType == DocumentFieldType.String)
@@ -198,22 +249,26 @@ Now you're ready to use the SDK to evaluate the pdf file.
                 Console.WriteLine($"Vendor Name: '{vendorName}', with confidence {vendorNameField.Confidence}.");
             }
         }
+
+        if (invoice.Fields.TryGetValue("CustomerName", out DocumentField? customerNameField))
+        {
+            if (customerNameField.FieldType == DocumentFieldType.String)
+            {
+                string customerName = customerNameField.Value.AsString();
+                Console.WriteLine($"Customer Name: '{customerName}', with confidence {customerNameField.Confidence}.");
+            }
+        }
+
+        if (invoice.Fields.TryGetValue("InvoiceTotal", out DocumentField? invoiceTotalField))
+        {
+            if (invoiceTotalField.FieldType == DocumentFieldType.Currency)
+            {
+                CurrencyValue invoiceTotal = invoiceTotalField.Value.AsCurrency();
+                Console.WriteLine($"Invoice Total: '{invoiceTotal.Symbol}{invoiceTotal.Amount}', with confidence {invoiceTotalField.Confidence}.");
+            }
+        }
+   }
     ```
-
-    **Python**
-
-    ```python
-    receipts = poller.result()
-    
-    for idx, receipt in enumerate(receipts.documents):
-    
-        vendor_name = receipt.fields.get("VendorName")
-        if vendor_name:
-            print(f"\nVendor Name: {vendor_name.value}, with confidence {vendor_name.confidence}.")
-    ```
-
-    > [!NOTE]
-    > You've added code to display the vendor name. The starter project also includes code to display the *customer name* and *invoice total*.
 
 
 1. In the code editor, use the **CTRL+S** command or **Right-click > Save** to save your changes and then use the **CTRL+Q** command or **Right-click > Quit** to close the code editor while keeping the cloud shell command line open.
