@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Use prebuilt Document Intelligence models'
-    description: 'Use prebuilt Document Intelligence models to process text fields from documents.'
+    title: 'Extract data from forms with Azure AI Document Intelligence'
+    description: 'Use prebuilt Azure AI Document Intelligence models to process text fields from documents.'
 ---
 
-# Use prebuilt Document Intelligence models
+# Extract data from forms with Azure AI Document Intelligence
 
 In this exercise, you'll set up an Azure AI Foundry project with all the necessary resources for document analysis. You'll use both the Azure AI Foundry and C# or Python to submit forms to that resource for analysis.
 
@@ -12,21 +12,18 @@ In this exercise, you'll set up an Azure AI Foundry project with all the necessa
 
 Let's start by creating an Azure AI Foundry project.
 
-1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image:
+1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it's open):
 
-    ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-portal.png)
+    ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
 
-1. In the home page, select **+ Create project**.
-1. In the **Create a project** wizard, enter a suitable project name for (for example, `my-ai-project`) then review the Azure resources that will be automatically created to support your project.
-1. Select **Customize** and specify the following settings for your hub:
-    - **Hub name**: *A unique name - for example `my-ai-hub`*
+1. In the browser, navigate to `https://ai.azure.com/managementCenter/allResources` and select **Create**. Then choose the option to create a new **AI hub resource**.
+1. In the **Create a project** wizard, enter a valid name for your project, and if an existing hub is suggested, select the option to create a new one and expand **Advanced options** to specify the following settings for your project:
     - **Subscription**: *Your Azure subscription*
-    - **Resource group**: *Create a new resource group with a unique name (for example, `my-ai-resources`), or select an existing one*
-    - **Location**: Choose any available region
-    - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource with an appropriate name (for example, `my-ai-services`) or use an existing one*
-    - **Connect Azure AI Search**: Skip connecting
+    - **Resource group**: *Create or select a resource group*
+    - **Hub name**: A valid name for your hub
+    - **Location**:  Any available region.
 
-1. Select **Next** and review your configuration. Then select **Create** and wait for the process to complete.
+1. Wait for your project to be created.
 1. When your project is created, close any tips that are displayed and review the project page in Azure AI Foundry portal, which should look similar to the following image:
 
     ![Screenshot of a Azure AI project details in Azure AI Foundry portal.](./media/ai-foundry-project.png)
