@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Extract data from forms with Azure AI Document Intelligence'
+    title: 'Analyze forms with prebuilt Azure AI Document Intelligence models'
     description: 'Use prebuilt Azure AI Document Intelligence models to process text fields from documents.'
 ---
 
-# Extract data from forms with Azure AI Document Intelligence
+# Analyze forms with prebuilt Azure AI Document Intelligence models
 
 In this exercise, you'll set up an Azure AI Foundry project with all the necessary resources for document analysis. You'll use both the Azure AI Foundry and C# or Python to submit forms to that resource for analysis.
 
@@ -87,7 +87,7 @@ This is the invoice that your code will analyze.
    **Python**
 
     ```
-   cd mslearn-ai-info/Labfiles/prebuilt-doc-intelligence/python
+   cd mslearn-ai-info/Labfiles/prebuilt-doc-intelligence/Python
     ```
 
     **C#**
@@ -95,7 +95,6 @@ This is the invoice that your code will analyze.
     ```
    cd mslearn-ai-info/Labfiles/prebuilt-doc-intelligence/c-sharp
     ```
-
 
 1. In the cloud shell command line pane, enter the following command to install the libraries you'll use:
 
@@ -185,7 +184,7 @@ Now you're ready to use the SDK to evaluate the pdf file.
 
     ```csharp
    // Create the client
-   var cred = new AzureKeyCredential(apiKey);
+   var cred = new AzureKeyCredential(key);
    var client = new DocumentAnalysisClient(new Uri(endpoint), cred);
     ```
 
@@ -211,10 +210,10 @@ Now you're ready to use the SDK to evaluate the pdf file.
 
 1. Find the comment **Display invoice information to the user**and add the following code:
 
-     **Python**
+    **Python**
 
     ```python
-  # Display invoice information to the user
+   # Display invoice information to the user
    receipts = poller.result()
     
    for idx, receipt in enumerate(receipts.documents):
@@ -224,8 +223,8 @@ Now you're ready to use the SDK to evaluate the pdf file.
             print(f"\nVendor Name: {vendor_name.value}, with confidence {vendor_name.confidence}.")
 
         customer_name = receipt.fields.get("CustomerName")
-            if customer_name:
-                print(f"Customer Name: '{customer_name.value}, with confidence {customer_name.confidence}.")
+        if customer_name:
+            print(f"Customer Name: '{customer_name.value}, with confidence {customer_name.confidence}.")
 
 
         invoice_total = receipt.fields.get("InvoiceTotal")
@@ -271,38 +270,24 @@ Now you're ready to use the SDK to evaluate the pdf file.
     ```
 
 
-1. In the code editor, use the **CTRL+S** command or **Right-click > Save** to save your changes and then use the **CTRL+Q** command or **Right-click > Quit** to close the code editor while keeping the cloud shell command line open.
+1. In the code editor, use the **CTRL+S** command or **Right-click > Save** to save your changes. Keep the code editor open in case you need to fix any errors in the code, but resize the panes so you can see the command line pane clearly.
 
 1. In the command line pane, enter the following command to run the application.
 
-1. ***For C# only***, to build your project, enter this command:
-
-    **C#**:
-
-    ```powershell
-    dotnet build
-    ```
-
-1. To run your code, enter this command:
-
-    **C#**:
-
-    ```powershell
-    dotnet run
-    ```
-
     **Python**:
 
-    ```powershell
+    ```
     python document-analysis.py
+    ```
+
+    **C#**:
+
+    ```
+    dotnet run
     ```
 
 The program displays the vendor name, customer name, and invoice total with confidence levels. Compare the values it reports with the sample invoice you opened at the start of this section.
 
 ## Clean up
 
-If you're done with your Azure resource, remember to delete the resource in the [Azure portal](https://portal.azure.com/?azure-portal=true) to avoid further charges.
-
-## More information
-
-For more information about the Document Intelligence service, see the [Document Intelligence documentation](https://learn.microsoft.com/azure/ai-services/document-intelligence/?azure-portal=true).
+If you're done with your Azure resource, remember to delete the resource in the [Azure portal](https://portal.azure.com) (`https://portal.azure.com`) to avoid further charges.

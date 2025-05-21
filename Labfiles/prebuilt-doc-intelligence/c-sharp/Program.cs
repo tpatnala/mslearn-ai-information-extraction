@@ -1,4 +1,7 @@
 ﻿using Azure;
+using System;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration
 
 // Add references
 
@@ -7,7 +10,7 @@ namespace document_analysis
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             // Clear the console
             Console.Clear();

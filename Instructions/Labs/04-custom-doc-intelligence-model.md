@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Extract Data from Forms'
+    title: 'Analyze forms with custom Azure AI Document Intelligence models'
     description: 'Create a custom Document Intelligence model to extract specific data from documents.'
 ---
 
-# Extract Data from Forms
+# Analyze forms with custom Azure AI Document Intelligence models
 
 Suppose a company currently requires employees to manually purchase order sheets and enter the data into a database. They would like you to utilize AI services to improve the data entry process. You decide to build a machine learning model that will read the form and produce structured data that can be used to automatically update a database.
 
@@ -44,13 +44,13 @@ You'll develop your text translation app using Cloud Shell. The code files for y
 
     ```
     rm -r mslearn-ai-information-extraction -f
-    git clone https://github.com/microsoftlearning/mslearn-ai-information-extraction mslearn-ai-information-extraction
+    git clone https://github.com/microsoftlearning/mslearn-ai-information-extraction mslearn-ai-info
     ```
 
 1. After the repo has been cloned, navigate to the folder containing the application code files:  
 
     ```
-   cd mslearn-ai-information-extraction/Labfiles/custom-doc-intelligence
+   cd mslearn-ai-info/Labfiles/custom-doc-intelligence
     ```
 
 ## Gather documents for training
@@ -123,7 +123,7 @@ Now you will train the model using the files uploaded to the storage account.
         - Select *Continue*.
     - Select *Create project*
 
-1. Once your project is created, on the top right of the screen, select **Train** to train your model. Use the following configurations:
+1. When your project is created, on the top right of the screen, select **Train** to train your model. Use the following configurations:
     - **Model ID**: *Provide a globally unique name (you'll need the model ID name in the next step)*. 
     - **Build Mode**: Template.
 1. Select **Go to Models**.
@@ -131,29 +131,43 @@ Now you will train the model using the files uploaded to the storage account.
 
 ## Test your custom Document Intelligence model
 
-1. Return to the Azure Portal. In the command line, run `cd C-Sharp` or `cd Python` depending on your language preference. Each folder contains the language-specific files for an app into which you're you're going to integrate Azure OpenAI functionality.
-1. In the command line, install the Document Intelligence package by running the appropriate command for your language preference:
+1. Return to the Azure Portal. In the command line, run the following command to change to the folder for your preferred language:
 
-    **C#**:
+    **Python**
 
-    ```powershell
-    dotnet add package Azure.AI.FormRecognizer --version 4.1.0
     ```
+    cd Python
+    ```
+
+    **C#**
+
+    ```
+    cd C-Sharp
+    ```
+    
+1. Install the Document Intelligence package by running the appropriate command for your language preference:
 
     **Python**:
 
-    ```powershell
+    ```
     python -m venv labenv
    ./labenv/bin/Activate.ps1
-   pip install python-dotenv azure-ai-formrecognizer==3.3.3
+   pip install -r requirements.txt azure-ai-formrecognizer==3.3.3
     ```
 
-1. Using the `ls` command, you can view the contents of the **C-Sharp** or **Python** folder. Note that it contains a file for configuration settings:
+    **C#**:
 
-    - **C#**: appsettings.json
-    - **Python**: .env
+    ```
+    dotnet add package Azure.AI.FormRecognizer --version 4.1.0
+    ```
 
 1. Enter the following command to edit the configuration file that has been provided:
+
+   **Python**
+
+    ```
+   code .env
+    ```
 
     **C#**
 
@@ -161,32 +175,43 @@ Now you will train the model using the files uploaded to the storage account.
    code appsettings.json
     ```
 
-    **Python**
-
-    ```
-   code .env
-    ```
-
 1. Edit the configuration file with the following values:
     - Your Document Intelligence endpoint.
     - Your Document Intelligence key.
-    - The Model ID generated you provided when training your model. You can find this on the **Models** page of the Document Intelligence Studio. **Save** your changes and close the code editor.
+    - The Model ID generated you provided when training your model. You can find this on the **Models** page of the Document Intelligence Studio.
+
+1. After you've replaced the placeholders, within the code editor, use the **CTRL+S** command to save your changes and then use the **CTRL+Q** command to close the code editor while keeping the cloud shell command line open.
+
+1. Enter the following command to edit the app file that has been provided:
+
+    **Python**
+
+    ```
+   code document-analysis.py
+    ```
+
+    **C#**
+
+    ```
+   code Program.cs
+    ```
+
+    The file is opened in a code editor.
 
 1. Open the code file for your client application (`code Program.cs` for C#, `code test-model.py` for Python) and review the code it contains, particularly that the image in the URL refers to the file in this GitHub repo on the web. Close the file without making any changes.
 
 1. In the command line, and enter the following command to run the program:
 
-    **C#**
-
-    ```powershell
-    dotnet build
-    dotnet run
-    ```
-
     **Python**
 
     ```powershell
     python test-model.py
+    ```
+
+    **C#**
+
+    ```powershell
+    dotnet run
     ```
 
 1. View the output and observe how the output for the model provides field names like `Merchant` and `CompanyPhoneNumber`.
