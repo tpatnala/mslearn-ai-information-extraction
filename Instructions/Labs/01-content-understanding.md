@@ -16,20 +16,19 @@ Let's start by creating an Azure AI Foundry project.
 
 1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image:
 
-    ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-portal.png)
+    ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
 
-1. In the home page, select **+ Create project**.
-1. In the **Create a project** wizard, enter a valid name for your project, and if an existing hub is suggested, choose the option to create a new one. Then review the Azure resources that will be automatically created to support your hub and project.
-1. Select **Customize** and specify the following settings for your hub:
-    - **Hub name**: *A valid name for your hub*
+1. At the bottom of the home page, select **Explore Azure AI Services**.
+1. In the Azure AI Services page, select **Try Content Understanding**.
+1. Select **Select or create a project to start** and choose the option to **Create a new project**.
+1. In the **Create a project** wizard, enter a valid name for your project, and if an existing hub is suggested, select the option to create a new one and expand **Advanced options** to specify the following settings for your project:
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create or select a resource group*
-    - **Location**: Choose one of the following regions\*
-        - West US
-        - Sweden Central
+    - **Hub name**: *A valid name for your hub*
+    - **Location**: Choose one of the following locations:\*
         - Australia East
-    - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource*
-    - **Connect Azure AI Search**: Skip connecting
+        - Sweden Central
+        - West US
 
     > \*At the time of writing, Azure AI Content understanding is only avilable in these regions.
 
@@ -54,8 +53,8 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 ### Define a schema for invoice analysis
 
 1. In the browser tab containing the home page for your Azure AI Foundry project; in the navigation pane on the left, select **Content Understanding**.
-1. On the **Content Understanding** page, select the **Custom analyzer** tab at the top.
-1. On the Content Understanding custom analyzer page, select **+ Create**, and create a task with the following settings:
+1. On the **Content Understanding** page, select the **Custom task** tab at the top.
+1. On the Content Understanding custom task page, select **+ Create**, and create a task with the following settings:
     - **Task name**: `Invoice analysis`
     - **Description**: `Extract data from an invoice`
     - **Azure AI services connection**: *The Azure AI Services resource in your Azure AI Foundry hub*
@@ -149,8 +148,8 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 ### Define a schema for image analysis
 
 1. In the browser tab containing the home page for your Azure AI Foundry project; in the navigation pane on the left, select **Content Understanding**.
-1. On the **Content Understanding** page, select the **Custom analyzer** tab at the top.
-1. On the Content Understanding custom analyzer page, select **+ Create**, and create a task with the following settings:
+1. On the **Content Understanding** page, select the **Custom task** tab at the top.
+1. On the Content Understanding custom task page, select **+ Create**, and create a task with the following settings:
     - **Task name**: `Slide analysis`
     - **Description**: `Extract data from an image of a slide`
     - **Azure AI services connection**: *The Azure AI Services resource in your Azure AI Foundry hub*
@@ -232,8 +231,8 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 ### Define a schema for audio analysis
 
 1. In the browser tab containing the home page for your Azure AI Foundry project; in the navigation pane on the left, select **Content Understanding**.
-1. On the **Content Understanding** page, select the **Custom analyzer** tab at the top.
-1. On the Content Understanding custom analyzer page, select **+ Create**, and create a task with the following settings:
+1. On the **Content Understanding** page, select the **Custom task** tab at the top.
+1. On the Content Understanding custom task page, select **+ Create**, and create a task with the following settings:
     - **Task name**: `Voicemail analysis`
     - **Description**: `Extract data from a voicemail recording`
     - **Azure AI services connection**: *The Azure AI Services resource in your Azure AI Foundry hub*
@@ -309,8 +308,8 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 ### Define a schema for video analysis
 
 1. In the browser tab containing the home page for your Azure AI Foundry project; in the navigation pane on the left, select **Content Understanding**.
-1. On the **Content Understanding** page, select the **Custom analyzer** tab at the top.
-1. On the Content Understanding custom analyzer page, select **+ Create**, and create a task with the following settings:
+1. On the **Content Understanding** page, select the **Custom task** tab at the top.
+1. On the Content Understanding custom task page, select **+ Create**, and create a task with the following settings:
     - **Task name**: `Conference call video analysis`
     - **Description**: `Extract data from a video conference recording`
     - **Azure AI services connection**: *The Azure AI Services resource in your Azure AI Foundry hub*
