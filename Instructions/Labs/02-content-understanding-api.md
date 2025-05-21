@@ -15,28 +15,20 @@ This exercise takes approximately **30** minutes.
 Let's start by creating an Azure AI services resource.
 
 1. In a web browser, open the [Azure portal](https://portal.azure.com) at `https://portal.azure` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in.
-
-1. In the home page, in the search box at the top of the page, search for `Azure AI services`.
-1. On the search results page, in the navigation pane on the left, under **All Azure AI ser ices** and **Azure AI services**, select **Azure AI services**.
-
-    ![Screenshot of search results in the Azure portal for Azure AI services.](./media/azure-ai-services.png)
-
-    > **Important!** Be sure to select the **Azure AI services** resource under **All Azure AI services** with the following icon:<br>![Azure AI services icon.](./media/azure-ai-services-icon.png)<br>There's another Azure resource type named Azure AI services, which won't work for this exercise.
-
-1. After selecting **Azure AI services**, above the list of existing Azure AI services resources in your subscription (if any), select **+ Create**; and create a new Azure AI services resource with the following settings:
+1. Create a new `Azure AI Foundry` resource with the following settings:
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create or select a resource group*
+    - **Name**: *A valid name for your Azure AI Foundry resource*
     - **Region**: Choose one of the following regions\*
         - West US
         - Sweden Central
         - Australia East
-    - **Name**: *A valid name for your Azure AI services resource*
-    - **Pricing tier**: Standard S0
+    - **Default project name**: *A valid name for your project*
 
     > \*At the time of writing, Azure AI Content understanding is only avilable in these regions.
 
 1. Wait for the resource to be created, then go to its page in the Azure portal.
-1. In the page for your Azure AI services resource, in the navigation pane on the left, under **Resource management**, select **Keys and endpoint** to view the keys and endpoint page for the resource. Then select the **Content Understanding** tab:
+1. In the page for your Azure AI Foundry resource, in the navigation pane on the left, under **Resource management**, select **Keys and endpoint** to view the keys and endpoint page for the resource. Then select the **AI Services** tab:
 
     ![Screenshot of Content Understanding keys and endpoint in the Azure AI portal.](./media/keys-and-endpoint.png)
 
