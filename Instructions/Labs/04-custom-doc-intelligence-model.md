@@ -57,7 +57,7 @@ You'll develop your text translation app using Cloud Shell. The code files for y
 
 You'll use the sample forms such as this one to train a test a model: 
 
-![An image of an invoice used in this project.](../media/Form_1.jpg)
+![An image of an invoice used in this project.](./media/Form_1.jpg)
 
 1. In the command line, run `ls ./sample-forms` to list the content in the **sample-forms** folder. Notice there are files ending in **.json** and **.jpg** in the folder.
 
@@ -69,7 +69,7 @@ You'll use the sample forms such as this one to train a test a model:
 
 1. On the **Overview** page for your resource group, note the **Subscription ID** and **Location**. You will need these values, along with your **resource group** name in subsequent steps.
 
-    ![An example of the resource group page.](../media/resource_group_variables.png)
+    ![An example of the resource group page.](./media/resource_group_variables.png)
 
 1. In the command line, run the following command to list the Azure locations.
 
