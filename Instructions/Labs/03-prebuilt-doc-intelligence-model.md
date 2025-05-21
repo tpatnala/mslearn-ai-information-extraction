@@ -54,7 +54,11 @@ Let's start by using the **Azure AI Foundry** portal and the Read model to analy
 
 Now let's explore the app that uses the Azure Document Intelligence service SDK. You'll develop your app using Cloud Shell. The code files for your app have been provided in a GitHub repo.
 
-> **Tip**: If you have already cloned the **mslearn-ai-information-extraction** repo, you can skip this task. Otherwise, follow these steps to clone it to your development environment.
+Applications for both C# and Python have been provided, as well as a sample pdf file you'll use to test Document Intelligence. Both apps feature the same functionality. First, you'll complete some key parts of the application to enable using your Azure Document Intelligence resource.
+
+This is the invoice that your code will analyze.
+
+![Screenshot showing a sample invoice document.](./media/sample-invoice.png)
 
 1. In the Azure AI Foundry portal, view the **Overview** page for your project.
 1. In the **Endpoints and keys** area, select the **Azure AI Services** tab, and note the **API Key** and **Azure AI Services endpoint**. You'll use these credentials to connect to your Azure AI Services in a client application.
@@ -65,7 +69,7 @@ Now let's explore the app that uses the Azure Document Intelligence service SDK.
 
 1. In the cloud shell toolbar, in the **Settings** menu, select **Go to Classic version** (this is required to use the code editor).
 
-    > **Tip**: As you paste commands into the cloudshell, the ouput may take up a large amount of the screen buffer. You can clear the screen by entering the `cls` command to make it easier to focus on each task.
+    **<font color="red">Ensure you've switched to the classic version of the cloud shell before continuing.</font>**
 
 1. In the PowerShell pane, enter the following commands to clone the GitHub repo for this exercise:
 
@@ -74,11 +78,7 @@ Now let's explore the app that uses the Azure Document Intelligence service SDK.
    git clone https://github.com/microsoftlearning/mslearn-ai-information-extraction mslearn-ai-info
     ```
 
-Applications for both C# and Python have been provided, as well as a sample pdf file you'll use to test Document Intelligence. Both apps feature the same functionality. First, you'll complete some key parts of the application to enable using your Azure Document Intelligence resource.
-
-1. Examine the following invoice and note some of its fields and values. This is the invoice that your code will analyze.
-
-    ![Screenshot showing a sample invoice document.](./media/sample-invoice.png#lightbox)
+    > **Tip**: As you paste commands into the cloudshell, the ouput may take up a large amount of the screen buffer. You can clear the screen by entering the `cls` command to make it easier to focus on each task.
 
     ***Now follow the steps for your chosen programming language.***
 
