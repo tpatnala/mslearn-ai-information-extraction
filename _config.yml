@@ -15,4 +15,4 @@ markdown: kramdown
 kramdown:
    syntax_highlighter_opts:
       disable : true
-title: AI-powered information extraction
+title: Develop AI-powered information extraction solutions in Azure
