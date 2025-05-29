@@ -113,7 +113,7 @@ You're going to use the REST API to create an analyzer that can extract informat
    print (f"Creating {analyzer}")
 
    # Set the API version
-   CU_VERSION = "2024-12-01-preview"
+   CU_VERSION = "2025-05-01-preview"
 
    # initiate the analyzer creation operation
    headers = {

@@ -1,6 +1,6 @@
 {
     "description": "Business card analyzer",
-    "scenario": "document",
+    "baseAnalyzerId": "prebuilt-documentAnalyzer",
     "config": {
         "returnDetails": true
     },
