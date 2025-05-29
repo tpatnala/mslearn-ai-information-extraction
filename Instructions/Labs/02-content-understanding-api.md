@@ -197,7 +197,7 @@ Now that you've created an analyzer, you can consume it from a client applicatio
    print (f"Analyzing {image_file}")
 
    # Set the API version
-   CU_VERSION = "2024-12-01-preview"
+   CU_VERSION = "2025-05-01-preview"
 
    # Read the image data
    with open(image_file, "rb") as file:
@@ -219,7 +219,7 @@ Now that you've created an analyzer, you can consume it from a client applicatio
    # Use a GET request to check the status of the analysis operation
    print ('Getting results...')
    time.sleep(1)
-   result_url = f'{endpoint}/contentunderstanding/analyzers/{analyzer}/results/{id_value}?api-version={CU_VERSION}'
+   result_url = f'{endpoint}/contentunderstanding/analyzerResults/{id_value}?api-version={CU_VERSION}'
    result_response = requests.get(result_url, headers=headers)
    print(result_response.status_code)
 
