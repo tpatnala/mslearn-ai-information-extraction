@@ -67,7 +67,6 @@ You'll use the sample forms such as this one to train a test a model:
     The **.json** files have been generated for you and contain label information. The files will be uploaded into your blob storage container alongside the forms.
 
 1. In the **Azure portal** and navigate to your resource's **Overview** page if you're not already there. Under the *Essentials* section, note the **Resource group**, **Subscription ID**, and **Location**. You will need these values in subsequent steps.
-1. 
 1. Run the command `code setup.sh` to open **setup.sh** in a code editor. You will use this script to run the Azure command line interface (CLI) commands required to create the other Azure resources you need.
 
 1. In the **setup.sh** script, review the commands. The program will:
