@@ -23,7 +23,7 @@ To use the Azure AI Document Intelligence service, you need a Azure AI Document 
     - **Region**: Any available region
     - **Name**: A valid name for your Document Intelligence resource
     - **Pricing tier**: Free F0 (*if you don't have a Free tier available, select* Standard S0).
-1. When the deployment is complete, select **Go to resource** to view the resource's **Overview** page. 
+1. When the deployment is complete, select **Go to resource** to view the resource's **Overview** page.
 
 ## Prepare to develop an app in Cloud Shell
 
