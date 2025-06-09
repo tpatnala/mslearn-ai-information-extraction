@@ -10,27 +10,29 @@ In this exercise, you use Azure AI Content Understanding to create an analyzer t
 
 This exercise takes approximately **30** minutes.
 
-## Create an Azure AI services resource
+## Create an Azure AI Foundry hub and project
 
-Let's start by creating an Azure AI services resource.
+The features of Azure AI Foundry we're going to use in this exercise require a project that is based on an Azure AI Foundry *hub* resource.
 
-1. In a web browser, open the [Azure portal](https://portal.azure.com) at `https://portal.azure` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in.
-1. Create a new `Azure AI Foundry` resource with the following settings:
+1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it's open):
+
+    ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
+
+1. In the browser, navigate to `https://ai.azure.com/managementCenter/allResources` and select **Create**. Then choose the option to create a new **AI hub resource**.
+1. In the **Create a project** wizard, enter a valid name for your project, and if an existing hub is suggested, select the option to create a new one and expand **Advanced options** to specify the following settings for your project:
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create or select a resource group*
-    - **Name**: *A valid name for your Azure AI Foundry resource*
-    - **Region**: Choose one of the following regions\*
-        - West US
-        - Sweden Central
+    - **Hub name**: A valid name for your hub
+    - **Location**: Choose one of the following locations:\*
         - Australia East
-    - **Default project name**: *A valid name for your project*
+        - Sweden Central
+        - West US
 
-    > \*At the time of writing, Azure AI Content understanding is only avilable in these regions.
+    > \*At the time of writing, Azure AI Content understanding is only available in these regions.
 
-1. Wait for the resource to be created, then go to its page in the Azure portal.
-1. In the page for your Azure AI Foundry resource, in the navigation pane on the left, under **Resource management**, select **Keys and endpoint** to view the keys and endpoint page for the resource. Then select the **AI Services** tab:
+    > **Tip**: If the **Create** button is still disabled, be sure to rename your hub to a unique alphanumeric value.
 
-    ![Screenshot of Content Understanding keys and endpoint in the Azure AI portal.](./media/keys-and-endpoint.png)
+1. Wait for your project to be created, and then navigate to your project overview page.
 
 ## Use the REST API to create a Content Understanding analyzer
 
