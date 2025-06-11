@@ -17,11 +17,14 @@ Let's start by creating an Azure AI Foundry project.
     ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
 
 1. In the browser, navigate to `https://ai.azure.com/managementCenter/allResources` and select **Create**. Then choose the option to create a new **AI hub resource**.
-1. In the **Create a project** wizard, enter a valid name for your project, and if an existing hub is suggested, select the option to create a new one and expand **Advanced options** to specify the following settings for your project:
+1. In the **Create a project** wizard, enter a valid name for your project, and use the **Rename hub** link to specify a valid name for your new hub. Then expand **Advanced options** and specify the following settings for your project:
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create or select a resource group*
-    - **Hub name**: A valid name for your hub
-    - **Location**:  Any available region.
+    - **Region**:  *Any available region*
+
+    > **Note**: If you're working in an Azure subscription in which policies are used to restrict allowable resource names, you may need to use the link at the bottom of the **Create a new project** dialog box to create the hub using the Azure portal.
+
+    > **Tip**: If the **Create** button is still disabled, be sure to rename your hub to a unique alphanumeric value.
 
 1. Wait for your project to be created.
 1. When your project is created, close any tips that are displayed and review the project page in Azure AI Foundry portal, which should look similar to the following image:
@@ -46,9 +49,6 @@ Let's start by using the **Azure AI Foundry** portal and the Read model to analy
 1. At the top-left, select **Run Analysis**.
 1. When the analysis is complete, the text extracted from the image is shown on the right in the **Content** tab. Review this text and compare it to the text in the original image for accuracy.
 1. Select the **Result** tab. This tab displays the extracted JSON code. 
-1. Scroll to the bottom of the JSON code in the **Result** tab. Notice that the read model has detected the language of each span indicated by `locale`. Most spans are in German (language code `de`) but you can find other language codes in the spans (e.g. English - language code `en` - in one of the first span).
-
-    ![Screenshot showing the detection of language for two spans in the results from the read model in Azure AI Document Intelligence Studio.](./media/language-detection.png#lightbox)
 
 ## Prepare to develop an app in Cloud Shell
 

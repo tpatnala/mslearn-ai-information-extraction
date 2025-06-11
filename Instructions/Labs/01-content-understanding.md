@@ -19,20 +19,19 @@ The features of Azure AI Foundry we're going to use in this exercise require a p
     ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
 
 1. In the browser, navigate to `https://ai.azure.com/managementCenter/allResources` and select **Create**. Then choose the option to create a new **AI hub resource**.
-1. In the **Create a project** wizard, enter a valid name for your project, and if an existing hub is suggested, select the option to create a new one and expand **Advanced options** to specify the following settings for your project:
+1. In the **Create a project** wizard, enter a valid name for your project, and use the **Rename hub** link to specify a valid name for your new hub. Then expand **Advanced options** and specify the following settings for your project:
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create or select a resource group*
-    - **Hub name**: A valid name for your hub
-    - **Location**: Choose one of the following locations:\*
+    - **Region**:  Select one of the following locations (*At the time of writing, Azure AI Content understanding is only available in these regions*):
         - Australia East
         - Sweden Central
         - West US
 
-    > \*At the time of writing, Azure AI Content understanding is only available in these regions.
+    > **Note**: If you're working in an Azure subscription in which policies are used to restrict allowable resource names, you may need to use the link at the bottom of the **Create a new project** dialog box to create the hub using the Azure portal.
 
     > **Tip**: If the **Create** button is still disabled, be sure to rename your hub to a unique alphanumeric value.
 
-1. Wait for your project to be created, and then navigate to your project.
+1. Wait for your project to be created.
 
 ## Download content
 
@@ -54,8 +53,10 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 1. On the Content Understanding custom task page, select **+ Create**, and create a task with the following settings:
     - **Task name**: `Invoice analysis`
     - **Description**: `Extract data from an invoice`
-    - **Azure AI services connection**: *The Azure AI Services resource in your Azure AI Foundry hub*
-    - **Azure Blob Storage account**: *The default storage account in your Azure AI Foundry hub*
+    - **Single file content analysis**: *Selected*
+    - **Advanced settings**:
+        - **Azure AI services connection**: *The Azure AI Services resource in your Azure AI Foundry hub*
+        - **Azure Blob Storage account**: *The default storage account in your Azure AI Foundry hub*
 1. Wait for the task to be created.
 
     > **Tip**: If an error accessing storage occurs, wait a minute and try again. Permissions for a new hub may take a few minutes to propagate.
@@ -64,7 +65,7 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 
     ![Image of an invoice number 1234.](./media/invoice-1234.png)
 
-1. On the **Define schema** page, after uploading the invoice file, select the **Invoice analysis** template and select **Create**.
+1. On the **Define schema** page, after uploading the invoice file, select the **Invoice data extraction** template and select **Create**.
 
     The *Invoice analysis* template includes common fields that are found in invoices. You can use the schema editor to delete any of the suggested fields that you don't need, and add any custom fields that you do.
 
@@ -103,7 +104,7 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
     - Unit
     - TaxAmount
     - TaxRate
-1. Use the **Back** button to return to the top-level of the invoice schema.
+1. Use the **OK** button to confirm the changes and return to the top-level of the invoice schema.
 
 1. Verify that your completed schema looks like this, and select **Save**.
 
@@ -121,7 +122,7 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 
 Now that you have trained a model to extract fields from invoices, you can build an analyzer to use with similar documents.
 
-1. Select the **Build analyzer** page, and then select **+ Build analyzer** and build a new analyzer with the following properties (typed exactly as shown here):
+1. Select the **Analyzer list** page, and then select **+ Build analyzer** and build a new analyzer with the following properties (typed exactly as shown here):
     - **Name**: `invoice-analyzer`
     - **Description**: `Invoice analyzer`
 1. Wait for the new analyzer to be ready (use the **Refresh** button to check).
@@ -149,8 +150,10 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 1. On the Content Understanding custom task page, select **+ Create**, and create a task with the following settings:
     - **Task name**: `Slide analysis`
     - **Description**: `Extract data from an image of a slide`
-    - **Azure AI services connection**: *The Azure AI Services resource in your Azure AI Foundry hub*
-    - **Azure Blob Storage account**: *The default storage account in your Azure AI Foundry hub*
+    - **Single file content analysis**: *Selected*
+    - **Advanced settings**:
+        - **Azure AI services connection**: *The Azure AI Services resource in your Azure AI Foundry hub*
+        - **Azure Blob Storage account**: *The default storage account in your Azure AI Foundry hub*
 1. Wait for the task to be created.
 
     > **Tip**: If an error accessing storage occurs, wait a minute and try again. Permissions for a new hub may take a few minutes to propagate.
@@ -232,8 +235,10 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 1. On the Content Understanding custom task page, select **+ Create**, and create a task with the following settings:
     - **Task name**: `Voicemail analysis`
     - **Description**: `Extract data from a voicemail recording`
-    - **Azure AI services connection**: *The Azure AI Services resource in your Azure AI Foundry hub*
-    - **Azure Blob Storage account**: *The default storage account in your Azure AI Foundry hub*
+    - **Single file content analysis**: *Selected*
+    - **Advanced settings**:
+        - **Azure AI services connection**: *The Azure AI Services resource in your Azure AI Foundry hub*
+        - **Azure Blob Storage account**: *The default storage account in your Azure AI Foundry hub*
 1. Wait for the task to be created.
 
     > **Tip**: If an error accessing storage occurs, wait a minute and try again. Permissions for a new hub may take a few minutes to propagate.
@@ -309,16 +314,18 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 1. On the Content Understanding custom task page, select **+ Create**, and create a task with the following settings:
     - **Task name**: `Conference call video analysis`
     - **Description**: `Extract data from a video conference recording`
-    - **Azure AI services connection**: *The Azure AI Services resource in your Azure AI Foundry hub*
-    - **Azure Blob Storage account**: *The default storage account in your Azure AI Foundry hub*
+    - **Single file content analysis**: *Selected*
+    - **Advanced settings**:
+        - **Azure AI services connection**: *The Azure AI Services resource in your Azure AI Foundry hub*
+        - **Azure Blob Storage account**: *The default storage account in your Azure AI Foundry hub*
 1. Wait for the task to be created.
 
     > **Tip**: If an error accessing storage occurs, wait a minute and try again. Permissions for a new hub may take a few minutes to propagate.
 
-1. On the **Define schema** page, upload the **meeting-1.mp4** file from the folder where you extracted content files. Then select the **Video shot analysis** template and select **Create**.
+1. On the **Define schema** page, upload the **meeting-1.mp4** file from the folder where you extracted content files. Then select the **Video segment analysis** template and select **Create**.
 1. In the **Content** pane on the right, select **Get transcription preview** to see a transcription of the recorded message.
 
-    The *Video shot analysis* template extracts data for each segment, or *shot* in the video. It doesn't include any predefined fields. You must define fields to describe the information you want to extract.
+    The *Video segment analysis* template extracts data for each segment, or *shot* in the video. It doesn't include any predefined fields. You must define fields to describe the information you want to extract.
 
 1. Use **+ Add new field** button to add the following fields, selecting **Save changes** (**&#10003;**) for each new field:
 
@@ -357,7 +364,7 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 
     ![Screenshot of image analysis test results.](./media/voicemail-analysis.png)
 
-1. In the **Fields** pane, view the extracted data for each shot by using the **Shot** drop-down list at the top. For each shot, view the field values that were generated, expanding list and table fields as necessary.
+1. In the **Fields** pane, view the extracted data for each segment by using the drop-down list at the top. For each shot, view the field values that were generated, expanding list and table fields as necessary.
 
 ### Build and test an analyzer
 
