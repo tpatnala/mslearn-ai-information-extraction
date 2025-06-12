@@ -266,8 +266,8 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 
     Audio analysis can take some time. While you're waiting, you can play the audio file below:
 
-    <video controls src="./media/call-1.mp4" title="Call 1" width="300">
-        <track src="./media/call-1.vtt" kind="captions" srclang="en" label="English">
+    <video controls src="https://github.com/MicrosoftLearning/mslearn-ai-information-extraction/raw/refs/heads/main/Instructions/Labs/media/call-1.mp4" title="Call 1" width="300">
+        <track src="https://github.com/MicrosoftLearning/mslearn-ai-information-extraction/raw/refs/heads/main/Instructions/Labs/media/call-1.vtt" kind="captions" srclang="en" label="English">
     </video>
 
     **Note**: This audio was generated using AI.
@@ -292,8 +292,8 @@ Now that you have trained a model to extract fields from voice messages, you can
 
     Audio analysis can take some time. While you're waiting, you can play the audio file below:
 
-    <video controls src="./media/call-2.mp4" title="Call 2" width="300">
-        <track src="./media/call-2.vtt" kind="captions" srclang="en" label="English">
+    <video controls src="https://github.com/MicrosoftLearning/mslearn-ai-information-extraction/raw/refs/heads/main/Instructions/Labs/media/call-2.mp4" title="Call 2" width="300">
+        <track src="https://github.com/MicrosoftLearning/mslearn-ai-information-extraction/raw/refs/heads/main/Instructions/Labs/media/call-2.vtt" kind="captions" srclang="en" label="English">
     </video>
 
     **Note**: This audio was generated using AI.
