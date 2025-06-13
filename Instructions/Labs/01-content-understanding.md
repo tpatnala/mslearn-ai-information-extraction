@@ -204,7 +204,7 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 
 Now that you have trained a model to extract fields from slides, you can build an analyzer to use with similar slide images.
 
-1. Select the **Build analyzer** page, and then select **+ Build analyzer** and build a new analyzer with the following properties (typed exactly as shown here):
+1. Select the **Analyzer list** page, and then select **+ Build analyzer** and build a new analyzer with the following properties (typed exactly as shown here):
     - **Name**: `slide-analyzer`
     - **Description**: `Slide image analyzer`
 1. Wait for the new analyzer to be ready (use the **Refresh** button to check).
@@ -282,7 +282,7 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 
 Now that you have trained a model to extract fields from voice messages, you can build an analyzer to use with similar audio recordings.
 
-1. Select the **Build analyzer** page, and then select **+ Build analyzer** and build a new analyzer with the following properties (typed exactly as shown here):
+1. Select the **Analyzer list** page, and then select **+ Build analyzer** and build a new analyzer with the following properties (typed exactly as shown here):
     - **Name**: `voicemail-analyzer`
     - **Description**: `Voicemail audio analyzer`
 1. Wait for the new analyzer to be ready (use the **Refresh** button to check).
