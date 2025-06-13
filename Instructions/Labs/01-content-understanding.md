@@ -204,7 +204,7 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 
 Now that you have trained a model to extract fields from slides, you can build an analyzer to use with similar slide images.
 
-1. Select the **Build analyzer** page, and then select **+ Build analyzer** and build a new analyzer with the following properties (typed exactly as shown here):
+1. Select the **Analyzer list** page, and then select **+ Build analyzer** and build a new analyzer with the following properties (typed exactly as shown here):
     - **Name**: `slide-analyzer`
     - **Description**: `Slide image analyzer`
 1. Wait for the new analyzer to be ready (use the **Refresh** button to check).
@@ -266,8 +266,8 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 
     Audio analysis can take some time. While you're waiting, you can play the audio file below:
 
-    <video controls src="./media/call-1.mp4" title="Call 1" width="300">
-        <track src="./media/call-1.vtt" kind="captions" srclang="en" label="English">
+    <video controls src="https://github.com/MicrosoftLearning/mslearn-ai-information-extraction/raw/refs/heads/main/Instructions/Labs/media/call-1.mp4" title="Call 1" width="300">
+        <track src="https://github.com/MicrosoftLearning/mslearn-ai-information-extraction/raw/refs/heads/main/Instructions/Labs/media/call-1.vtt" kind="captions" srclang="en" label="English">
     </video>
 
     **Note**: This audio was generated using AI.
@@ -282,7 +282,7 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 
 Now that you have trained a model to extract fields from voice messages, you can build an analyzer to use with similar audio recordings.
 
-1. Select the **Build analyzer** page, and then select **+ Build analyzer** and build a new analyzer with the following properties (typed exactly as shown here):
+1. Select the **Analyzer list** page, and then select **+ Build analyzer** and build a new analyzer with the following properties (typed exactly as shown here):
     - **Name**: `voicemail-analyzer`
     - **Description**: `Voicemail audio analyzer`
 1. Wait for the new analyzer to be ready (use the **Refresh** button to check).
@@ -292,8 +292,8 @@ Now that you have trained a model to extract fields from voice messages, you can
 
     Audio analysis can take some time. While you're waiting, you can play the audio file below:
 
-    <video controls src="./media/call-2.mp4" title="Call 2" width="300">
-        <track src="./media/call-2.vtt" kind="captions" srclang="en" label="English">
+    <video controls src="https://github.com/MicrosoftLearning/mslearn-ai-information-extraction/raw/refs/heads/main/Instructions/Labs/media/call-2.mp4" title="Call 2" width="300">
+        <track src="https://github.com/MicrosoftLearning/mslearn-ai-information-extraction/raw/refs/heads/main/Instructions/Labs/media/call-2.vtt" kind="captions" srclang="en" label="English">
     </video>
 
     **Note**: This audio was generated using AI.
@@ -322,20 +322,20 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 
     > **Tip**: If an error accessing storage occurs, wait a minute and try again. Permissions for a new hub may take a few minutes to propagate.
 
-1. On the **Define schema** page, upload the **meeting-1.mp4** file from the folder where you extracted content files. Then select the **Video segment analysis** template and select **Create**.
+1. On the **Define schema** page, upload the **meeting-1.mp4** file from the folder where you extracted content files. Then select the **Video analysis** template and select **Create**.
 1. In the **Content** pane on the right, select **Get transcription preview** to see a transcription of the recorded message.
 
-    The *Video segment analysis* template extracts data for each segment, or *shot* in the video. It doesn't include any predefined fields. You must define fields to describe the information you want to extract.
+    The *Video analysis* template extracts data for the video. It doesn't include any predefined fields. You must define fields to describe the information you want to extract.
 
 1. Use **+ Add new field** button to add the following fields, selecting **Save changes** (**&#10003;**) for each new field:
 
     | Field name | Field description | Value type | Method |
     |--|--|--|--|
     | `Summary` | `Summary of the discussion` | String | Generate |
-    ! `Participants` | `Count of meeting participants` | Integer | Generate |
+    | `Participants` | `Count of meeting participants` | Integer | Generate |
     | `ParticipantNames` | `Names of meeting participants` | List of Strings | Generate |
     | `SharedSlides` | `Descriptions of any PowerPoint slides presented` | List of Strings | Generate |
-    | `AssignedActions` | `Tasks assigned to participants` | Table | Generate |
+    | `AssignedActions` | `Tasks assigned to participants` | Table |  |
 
 1. When you enter the **AssignedActions** field, in the table of subfields that appears, create the following subfields:
 
@@ -344,7 +344,7 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
     | `Task` | `Description of the task` | String | Generate |
     | `AssignedTo` | `Who the task is assigned to` | String | Generate |
 
-1. Select **Back** to return to the top level of your schema, and verify that it looks like this. Then select **Save**.
+1. Select **&#10003; OK** to return to the top level of your schema, and verify that it looks like this. Then select **Save**.
 
 1. Verify that your schema looks like this. Then select **Save**.
 
@@ -354,8 +354,8 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 
     Video analysis can take some time. While you're waiting, you can view the video below:
 
-    <video controls src="./media/meeting-1.mp4" title="Meeting 1" width="480">
-        <track src="./media/meeting-1.vtt" kind="captions" srclang="en" label="English">
+    <video controls src="https://github.com/MicrosoftLearning/mslearn-ai-information-extraction/raw/refs/heads/main/Instructions/Labs/media/meeting-1.mp4" title="Meeting 1" width="480">
+        <track src="https://github.com/MicrosoftLearning/mslearn-ai-information-extraction/raw/refs/heads/main/Instructions/Labs/media/meeting-1.vtt" kind="captions" srclang="en" label="English">
     </video>
 
     **Note**: This video was generated using AI.
@@ -364,31 +364,30 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 
     ![Screenshot of image analysis test results.](./media/voicemail-analysis.png)
 
-1. In the **Fields** pane, view the extracted data for each segment by using the drop-down list at the top. For each shot, view the field values that were generated, expanding list and table fields as necessary.
+1. In the **Fields** pane, view the extracted data for the video, including the fields you added. View the field values that were generated, expanding list and table fields as necessary.
 
 ### Build and test an analyzer
 
 Now that you have trained a model to extract fields from conference call recordings, you can build an analyzer to use with similar videos.
 
-1. Select the **Build analyzer** page, and then select **+ Build analyzer** and build a new analyzer with the following properties (typed exactly as shown here):
+1. Select the **Analyzer list** page, and then select **+ Build analyzer** and build a new analyzer with the following properties (typed exactly as shown here):
     - **Name**: `conference-call-analyzer`
     - **Description**: `Conference call video analyzer`
 1. Wait for the new analyzer to be ready (use the **Refresh** button to check).
-1. When the analyzer has been built, select the **voicemail-analyzer** link. The fields defined in the analyzer's schema will be displayed.
-1. In the **voicemail-analyzer** page, select the **Test** tab.
-1. Use the **+ Upload test files** button to upload **meeting-2.mp4** from the folder where you extracted the content files, and run the analysis to extract field data from the audio file.
+1. When the analyzer has been built, select the **conference-call-analyzer** link. The fields defined in the analyzer's schema will be displayed.
+1. In the **conference-call-analyzer** page, select the **Test** tab.
+1. Use the **Upload test files** button to upload **meeting-2.mp4** from the folder where you extracted the content files, and run the analysis to extract field data from the audio file.
 
     Video analysis can take some time. While you're waiting, you can view the video below:
 
-    <video controls src="./media/meeting-2.mp4" title="Meeting 2" width="480">
-        <track src="./media/meeting-2.vtt" kind="captions" srclang="en" label="English">
+    <video controls src="https://github.com/MicrosoftLearning/mslearn-ai-information-extraction/raw/refs/heads/main/Instructions/Labs/media/meeting-2.mp4" title="Meeting 2" width="480">
+        <track src="https://github.com/MicrosoftLearning/mslearn-ai-information-extraction/raw/refs/heads/main/Instructions/Labs/media/meeting-2.vtt" kind="captions" srclang="en" label="English">
     </video>
 
     **Note**: This video was generated using AI.
 
-1. Review the **Fields** pane, and view the fields that the analyzer extracted for each shot in the conference call video.
+1. Review the **Fields** pane, and view the fields that the analyzer extracted for the conference call video.
 1. Review the **Results** pane to see the JSON response that the analyzer would return to a client application.
-1. On the **Code example** tab, view the sample code that you could use to develop a client application that uses the Content understanding REST interface to call your analyzer.
 1. Close the **conference-call-analyzer** page.
 
 ## Clean up

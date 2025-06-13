@@ -173,22 +173,6 @@ Now you will train the model using the files uploaded to the storage account.
 
 1. After you've replaced the placeholders, within the code editor, use the **CTRL+S** command to save your changes and then use the **CTRL+Q** command to close the code editor while keeping the cloud shell command line open.
 
-1. Enter the following command to edit the app file that has been provided:
-
-    **Python**
-
-    ```
-   code document-analysis.py
-    ```
-
-    **C#**
-
-    ```
-   code Program.cs
-    ```
-
-    The file is opened in a code editor.
-
 1. Open the code file for your client application (`code Program.cs` for C#, `code test-model.py` for Python) and review the code it contains, particularly that the image in the URL refers to the file in this GitHub repo on the web. Close the file without making any changes.
 
 1. In the command line, and enter the following command to run the program:
