@@ -344,6 +344,8 @@ Now that you have a useful index, you can use it from a client application. You 
    dotnet run
     ```
 
+    > **Tip**: If a compilation error occurs because the code targets .NET version 8.0 but .NET 9.0 is installed in the cloud shell, edit the **search-app.csproj** file in the code folder and update the **TargetFramework** setting to **9.0**.
+
 1. When prompted, enter a query such as `London` and view the results.
 1. Try another query, such as `flights`.
 1. When you're finished testing the app, enter `quit` to close it.

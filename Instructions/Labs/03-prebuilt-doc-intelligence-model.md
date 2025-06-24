@@ -286,6 +286,8 @@ Now you're ready to use the SDK to evaluate the pdf file.
     dotnet run
     ```
 
+    > **Tip**: If a compilation error occurs because the code targets .NET version 8.0 but .NET 9.0 is installed in the cloud shell, edit the **documentanalysis.csproj** file in the code folder and update the **TargetFramework** setting to **9.0**.
+
 The program displays the vendor name, customer name, and invoice total with confidence levels. Compare the values it reports with the sample invoice you opened at the start of this section.
 
 ## Clean up
