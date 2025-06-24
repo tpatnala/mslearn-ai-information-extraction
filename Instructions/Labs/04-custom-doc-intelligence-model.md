@@ -189,7 +189,7 @@ Now you will train the model using the files uploaded to the storage account.
     dotnet run
     ```
 
-    > **Tip**: If a compilation error occurs because the code targets .NET version 8.0 but .NET 9.0 is installed in the cloud shell, edit the **test-model.csproj** file in the code folder and update the **TargetFramework** setting to **9.0**.
+    > **Tip**: If a compilation error occurs because the code targets .NET version 8.0 but .NET 9.0 is installed in the cloud shell, edit the **test-model.csproj** file in the code folder and update the **TargetFramework** setting to **net9.0**.
 
 1. View the output and observe how the output for the model provides field names like `Merchant` and `CompanyPhoneNumber`.
 
