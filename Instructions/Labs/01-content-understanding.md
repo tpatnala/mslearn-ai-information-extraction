@@ -362,7 +362,7 @@ You are going to build an Azure AI Content Understanding analyzer that can extra
 
 1. When analysis is complete, review the results, which should look similar to this:
 
-    ![Screenshot of image analysis test results.](./media/voicemail-analysis.png)
+    ![Screenshot of image analysis test results.](./media/meeting-analysis.png)
 
 1. In the **Fields** pane, view the extracted data for the video, including the fields you added. View the field values that were generated, expanding list and table fields as necessary.
 
