@@ -8,6 +8,12 @@ lab:
 
 In this exercise, you use AI Search to index a set of documents maintained by Margie's Travel, a fictional travel agency. The indexing process involves using AI skills to extract key information to make them searchable, and generating a knowledge store containing data assets for further analysis.
 
+While this exercise is based on Python, you can develop similar applications using multiple language-specific SDKs; including:
+
+- [Azure AI Search client library for Python](https://pypi.org/project/azure-search-documents/)
+- [Azure AI Search client library for Microsoft .NET](https://www.nuget.org/packages/Azure.Search.Documents)
+- [Azure AI Search client library for JavaScript](https://www.npmjs.com/package/@azure/search-documents)
+
 This exercise takes approximately **40** minutes.
 
 ## Create Azure resources
@@ -242,25 +248,14 @@ Now that you have a useful index, you can use it from a client application. You 
 
     > **Tip**: As you enter commands into the cloudshell, the output may take up a large amount of the screen buffer. You can clear the screen by entering the `cls` command to make it easier to focus on each task.
 
-1. After the repo has been cloned, navigate to the folder containing the code files for your preferred programming language:
-
-    **Python**:
+1. After the repo has been cloned, navigate to the folder containing the application code files:
 
     ```
    cd mslearn-ai-info/Labfiles/knowledge/python
    ls -a -l
     ```
 
-    **C#**
-
-    ```
-   cd mslearn-ai-info/Labfiles/knowledge/c-sharp
-   ls -a -l
-    ```
-
-1. Install the Azure AI Search SDK and Azure identity packages by running the appropriate commands for your language preference:
-
-    **Python**
+1. Install the Azure AI Search SDK and Azure identity packages by running the following commands:
 
     ```
    python -m venv labenv
@@ -268,25 +263,10 @@ Now that you have a useful index, you can use it from a client application. You 
    pip install -r requirements.txt azure-identity azure-search-documents==11.5.1
     ```
 
-    **C#**
-
-    ```
-   dotnet add package Azure.Search.Documents --version 11.6.0
-   dotnet add package Azure.Identity
-    ```
-
 1. Run the following command to edit the configuration file for your app:
-
-    **Python**
 
     ```
    code .env
-    ```
-
-    **C#**
-
-    ```
-   code appsettings.json
     ```
 
     The configuation file is opened in a code editor.
@@ -303,19 +283,11 @@ Now that you have a useful index, you can use it from a client application. You 
 
 1. Run the following command to open the code file for your app:
 
-    **Python**
-
     ```
    code search-app.py
     ```
 
-    **C#**
-
-    ```
-   code Program.cs
-    ```
-
-    The ccode file is opened in a code editor.
+    The code file is opened in a code editor.
 
 1. Review the code, and note that it performs the following actions:
 
@@ -332,19 +304,9 @@ Now that you have a useful index, you can use it from a client application. You 
 1. Close the code editor pane (*CTRL+Q*), keeping the cloud shell command line console pane open
 1. Enter the following command to run the app:
 
-    **Python**
-
     ```
    python search-app.py
     ```
-
-    **C#**
-
-    ```
-   dotnet run
-    ```
-
-    > **Tip**: If a compilation error occurs because .NET version 9.0 is not installed, use the `dotnet --version` command to determine the version of .NET installed in your environment and then edit the **search-app.csproj** file in the code folder to update the **TargetFramework** setting accordingly.
 
 1. When prompted, enter a query such as `London` and view the results.
 1. Try another query, such as `flights`.

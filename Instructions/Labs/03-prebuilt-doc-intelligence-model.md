@@ -6,7 +6,15 @@ lab:
 
 # Analyze forms with prebuilt Azure AI Document Intelligence models
 
-In this exercise, you'll set up an Azure AI Foundry project with all the necessary resources for document analysis. You'll use both the Azure AI Foundry and C# or Python to submit forms to that resource for analysis.
+In this exercise, you'll set up an Azure AI Foundry project with all the necessary resources for document analysis. You'll use both the Azure AI Foundry portal and the Python SDK to submit forms to that resource for analysis.
+
+While this exercise is based on Python, you can develop similar applications using multiple language-specific SDKs; including:
+
+- [Azure AI Document Intelligence client library for Python](https://pypi.org/project/azure-ai-formrecognizer/)
+- [Azure AI Document Intelligence client library for Microsoft .NET](https://www.nuget.org/packages/Azure.AI.FormRecognizer)
+- [Azure AI Document Intelligence client library for JavaScript](https://www.npmjs.com/package/@azure/ai-form-recognizer)
+
+This exercise takes approximately **30** minutes.
 
 ## Create an Azure AI Foundry project
 
@@ -54,8 +62,6 @@ Let's start by using the **Azure AI Foundry** portal and the Read model to analy
 
 Now let's explore the app that uses the Azure Document Intelligence service SDK. You'll develop your app using Cloud Shell. The code files for your app have been provided in a GitHub repo.
 
-Applications for both C# and Python have been provided, as well as a sample pdf file you'll use to test Document Intelligence. Both apps feature the same functionality. First, you'll complete some key parts of the application to enable using your Azure Document Intelligence resource.
-
 This is the invoice that your code will analyze.
 
 ![Screenshot showing a sample invoice document.](./media/sample-invoice.png)
@@ -84,21 +90,11 @@ This is the invoice that your code will analyze.
 
 1. After the repo has been cloned, navigate to the folder containing the code files:
 
-   **Python**
-
     ```
    cd mslearn-ai-info/Labfiles/prebuilt-doc-intelligence/Python
     ```
 
-    **C#**
-
-    ```
-   cd mslearn-ai-info/Labfiles/prebuilt-doc-intelligence/c-sharp
-    ```
-
 1. In the cloud shell command line pane, enter the following command to install the libraries you'll use:
-
-   **Python**
 
     ```
    python -m venv labenv
@@ -106,26 +102,11 @@ This is the invoice that your code will analyze.
    pip install -r requirements.txt azure-ai-formrecognizer==3.3.3
     ```
 
-    **C#**
-
-    ```
-   dotnet add package Azure.AI.FormRecognizer --version 4.1.0
-    ```
-
 1. Enter the following command to edit the configuration file that has been provided:
-
-    **Python**
 
     ```
    code .env
     ```
-
-    **C#**
-
-    ```
-   code appsettings.json
-    ```
-    
 
     The file is opened in a code editor.
 
@@ -138,23 +119,13 @@ Now you're ready to use the SDK to evaluate the pdf file.
 
 1. Enter the following command to edit the app file that has been provided:
 
-    **Python**
-
     ```
    code document-analysis.py
-    ```
-
-    **C#**
-
-    ```
-   code Program.cs
     ```
 
     The file is opened in a code editor.
 
 1. In the code file, find the comment **Import the required libraries** and add the following code:
-
-    **Python**
 
     ```python
    # Add references
@@ -162,16 +133,7 @@ Now you're ready to use the SDK to evaluate the pdf file.
    from azure.ai.formrecognizer import DocumentAnalysisClient
     ```
 
-    **C#**
-
-    ```csharp
-   // Add references
-   using Azure.AI.FormRecognizer.DocumentAnalysis;
-    ```
-
 1. Find the comment **Create the client** and add the following code (being careful to maintain the correct indentation level):
-
-    **Python**
 
     ```python
    # Create the client
@@ -180,17 +142,7 @@ Now you're ready to use the SDK to evaluate the pdf file.
    )
     ```
 
-    **C#**
-
-    ```csharp
-   // Create the client
-   var cred = new AzureKeyCredential(key);
-   var client = new DocumentAnalysisClient(new Uri(endpoint), cred);
-    ```
-
 1. Find the comment **Analyze the invoice** and add the following code:
-
-    **Python**
 
     ```python
    # Analyse the invoice
@@ -199,18 +151,7 @@ Now you're ready to use the SDK to evaluate the pdf file.
    )
     ```
 
-    **C#**
-
-    ```csharp
-   // Analyse the invoice
-   AnalyzeDocumentOperation operation = await client.AnalyzeDocumentFromUriAsync(
-        WaitUntil.Completed,
-        "prebuilt-invoice", fileUri);
-    ```
-
 1. Find the comment **Display invoice information to the user**and add the following code:
-
-    **Python**
 
     ```python
    # Display invoice information to the user
@@ -232,61 +173,13 @@ Now you're ready to use the SDK to evaluate the pdf file.
             print(f"Invoice Total: '{invoice_total.value.symbol}{invoice_total.value.amount}, with confidence {invoice_total.confidence}.")
     ```
 
-   **C#**
-
-    ```csharp
-   // Display invoice information to the user
-   AnalyzeResult result = operation.Value;
-    
-   foreach (AnalyzedDocument invoice in result.Documents)
-   {
-        if (invoice.Fields.TryGetValue("VendorName", out DocumentField? vendorNameField))
-        {
-            if (vendorNameField.FieldType == DocumentFieldType.String)
-            {
-                string vendorName = vendorNameField.Value.AsString();
-                Console.WriteLine($"Vendor Name: '{vendorName}', with confidence {vendorNameField.Confidence}.");
-            }
-        }
-
-        if (invoice.Fields.TryGetValue("CustomerName", out DocumentField? customerNameField))
-        {
-            if (customerNameField.FieldType == DocumentFieldType.String)
-            {
-                string customerName = customerNameField.Value.AsString();
-                Console.WriteLine($"Customer Name: '{customerName}', with confidence {customerNameField.Confidence}.");
-            }
-        }
-
-        if (invoice.Fields.TryGetValue("InvoiceTotal", out DocumentField? invoiceTotalField))
-        {
-            if (invoiceTotalField.FieldType == DocumentFieldType.Currency)
-            {
-                CurrencyValue invoiceTotal = invoiceTotalField.Value.AsCurrency();
-                Console.WriteLine($"Invoice Total: '{invoiceTotal.Symbol}{invoiceTotal.Amount}', with confidence {invoiceTotalField.Confidence}.");
-            }
-        }
-   }
-    ```
-
-
 1. In the code editor, use the **CTRL+S** command or **Right-click > Save** to save your changes. Keep the code editor open in case you need to fix any errors in the code, but resize the panes so you can see the command line pane clearly.
 
 1. In the command line pane, enter the following command to run the application.
 
-    **Python**:
-
     ```
     python document-analysis.py
     ```
-
-    **C#**:
-
-    ```
-    dotnet run
-    ```
-
-    > **Tip**: If a compilation error occurs because .NET version 9.0 is not installed, use the `dotnet --version` command to determine the version of .NET installed in your environment and then edit the **documentanalysis.csproj** file in the code folder to update the **TargetFramework** setting accordingly.
 
 The program displays the vendor name, customer name, and invoice total with confidence levels. Compare the values it reports with the sample invoice you opened at the start of this section.
 

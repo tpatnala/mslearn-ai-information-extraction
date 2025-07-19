@@ -10,6 +10,14 @@ Suppose a company currently requires employees to manually purchase order sheets
 
 **Azure AI Document Intelligence** is an Azure AI service that enables users to build automated data processing software. This software can extract text, key/value pairs, and tables from form documents using optical character recognition (OCR). Azure AI Document Intelligence has pre-built models for recognizing invoices, receipts, and business cards. The service also provides the capability to train custom models. In this exercise, we will focus on building custom models.
 
+While this exercise is based on Python, you can develop similar applications using multiple language-specific SDKs; including:
+
+- [Azure AI Document Intelligence client library for Python](https://pypi.org/project/azure-ai-formrecognizer/)
+- [Azure AI Document Intelligence client library for Microsoft .NET](https://www.nuget.org/packages/Azure.AI.FormRecognizer)
+- [Azure AI Document Intelligence client library for JavaScript](https://www.npmjs.com/package/@azure/ai-form-recognizer)
+
+This exercise takes approximately **30** minutes.
+
 ## Create a Azure AI Document Intelligence resource
 
 To use the Azure AI Document Intelligence service, you need a Azure AI Document Intelligence or Azure AI Services resource in your Azure subscription. You'll use the Azure portal to create a resource.
@@ -42,8 +50,8 @@ You'll develop your text translation app using Cloud Shell. The code files for y
 1. In the PowerShell pane, enter the following commands to clone the GitHub repo for this exercise:
 
     ```
-    rm -r mslearn-ai-info -f
-    git clone https://github.com/microsoftlearning/mslearn-ai-information-extraction mslearn-ai-info
+   rm -r mslearn-ai-info -f
+   git clone https://github.com/microsoftlearning/mslearn-ai-information-extraction mslearn-ai-info
     ```
 
     > **Tip**: As you paste commands into the cloudshell, the ouput may take up a large amount of the screen buffer. You can clear the screen by entering the `cls` command to make it easier to focus on each task.
@@ -122,23 +130,13 @@ Now you will train the model using the files uploaded to the storage account.
 
 ## Test your custom Document Intelligence model
 
-1. Return to the browser tab containing the Azure Portal and cloud shell. In the command line, run the following command to change to the folder for your preferred language:
-
-    **Python**
+1. Return to the browser tab containing the Azure Portal and cloud shell. In the command line, run the following command to change to the folder containing the application code files:
 
     ```
     cd Python
     ```
 
-    **C#**
-
-    ```
-    cd C-Sharp
-    ```
-    
-1. Install the Document Intelligence package by running the appropriate command for your language preference:
-
-    **Python**:
+1. Install the Document Intelligence package by running the following command:
 
     ```
     python -m venv labenv
@@ -146,24 +144,10 @@ Now you will train the model using the files uploaded to the storage account.
    pip install -r requirements.txt azure-ai-formrecognizer==3.3.3
     ```
 
-    **C#**:
-
-    ```
-    dotnet add package Azure.AI.FormRecognizer --version 4.1.0
-    ```
-
 1. Enter the following command to edit the configuration file that has been provided:
-
-   **Python**
 
     ```
    code .env
-    ```
-
-    **C#**
-
-    ```
-   code appsettings.json
     ```
 
 1. In the pane containing the Azure portal, on the **Overview** page for your Document Intelligence resource, select **Click here to manage keys** to see the endpoint and keys for your resource. Then edit the configuration file with the following values:
@@ -177,19 +161,9 @@ Now you will train the model using the files uploaded to the storage account.
 
 1. In the command line, and enter the following command to run the program:
 
-    **Python**
-
-    ```powershell
-    python test-model.py
     ```
-
-    **C#**
-
-    ```powershell
-    dotnet run
+   python test-model.py
     ```
-
-    > **Tip**: If a compilation error occurs because .NET version 9.0 is not installed, use the `dotnet --version` command to determine the version of .NET installed in your environment and then edit the **test-model.csproj** file in the code folder to update the **TargetFramework** setting accordingly.
 
 1. View the output and observe how the output for the model provides field names like `Merchant` and `CompanyPhoneNumber`.
 
